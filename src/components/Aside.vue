@@ -7,6 +7,7 @@
         default-active="/Home" 
         :collapse="isCollapse" 
         :collapse-transition="false"
+        router=""
     >
         <el-menu-item index="/Home">
             <i class="el-icon-s-home"></i>
@@ -17,6 +18,7 @@
                 <i class="el-icon-message"></i>
                 <span slot="title">复盘数据</span>
             </template>
+            <!--index标签为页面-->
             <el-menu-item index="/AllData">总体数据</el-menu-item>
             <el-menu-item index="/north">北向资金</el-menu-item>
             <el-menu-item index="/upAll">上涨家数</el-menu-item>
