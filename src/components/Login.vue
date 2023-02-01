@@ -50,11 +50,10 @@
                 this.$refs.loginForm.validate((valid) => {
                     if (valid) { //valid成功为true，失败为false
                         //去后台验证用户名密码
-                        this.$axios.post('/user/login',this.loginForm).then(res=>res.data).then(res=>{
-                            console.log(res)
+                        this.$axios.post('/user/login',this.loginForm).then(res=>{
                             if(res.code==200){
                                 //存储
-                                sessionStorage.setItem("CurUser",JSON.stringify(res.data.user))
+                                //sessionStorage.setItem("CurUser",JSON.stringify(res.data.user))
 
                                 //跳转到主页
                                 this.$router.replace('/Index');

@@ -15,7 +15,7 @@
             </el-header>
 
             <el-main style="height: 100%">
-                <Main></Main>
+                <router-view></router-view>
             </el-main>
         </el-container>
     </el-container>

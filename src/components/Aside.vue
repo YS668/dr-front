@@ -4,10 +4,9 @@
         ext-color="black" 
         active-text-color="#ffd04b" 
         style="height: 100%;"
-        default-active="/Home" 
         :collapse="isCollapse" 
         :collapse-transition="false"
-        router=""
+        router
     >
         <el-menu-item index="/Home">
             <i class="el-icon-s-home"></i>
@@ -19,29 +18,32 @@
                 <span slot="title">复盘数据</span>
             </template>
             <!--index标签为页面-->
-            <el-menu-item index="/AllData">总体数据</el-menu-item>
-            <el-menu-item index="/north">北向资金</el-menu-item>
-            <el-menu-item index="/upAll">上涨家数</el-menu-item>
-            <el-menu-item index="/upLimit">涨停</el-menu-item>
-            <el-menu-item index="/downLimit">跌停</el-menu-item>
+            <el-menu-item index="/Data">总体数据</el-menu-item>
+            <el-menu-item index="/North">北向资金</el-menu-item>
+            <el-menu-item index="/Up">上涨家数</el-menu-item>
+            <el-menu-item index="/UpLimit">涨停股</el-menu-item>
         </el-submenu>
-        <el-menu-item index="/reviewPlan">
+        <el-menu-item index="/ReviewPlan">
             <i class="el-icon-s-home"></i>
             <span slot="title">复盘计划</span>
         </el-menu-item>
-        <el-menu-item index="/reviewArticle">
+        <el-menu-item index="/ReviewArticle">
             <i class="el-icon-s-home"></i>
             <span slot="title">复盘文章</span>
         </el-menu-item>
-        <el-menu-item index="/talk">
+        <el-menu-item index="/Forum">
             <i class="el-icon-s-home"></i>
             <span slot="title">讨论区</span>
         </el-menu-item>
-        <el-menu-item index="/propose">
+        <el-menu-item index="/Notice">
             <i class="el-icon-s-home"></i>
-            <span slot="title">建议与反馈</span>
+            <span slot="title">公告</span>
         </el-menu-item>
-        <el-menu-item index="/future">
+        <el-menu-item index="/Recomm">
+            <i class="el-icon-s-home"></i>
+            <span slot="title">建议</span>
+        </el-menu-item>
+        <el-menu-item >
             <i class="el-icon-s-home"></i>
             <span slot="title">敬请期待</span>
         </el-menu-item>
