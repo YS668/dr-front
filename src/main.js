@@ -11,8 +11,12 @@ import router from './router';
 Vue.use(VueRouter);
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
-
 Vue.use(ElementUI);
+
+//Vue.prototype.rdidFormat = function(rdid) { 
+//  console.log(rdid)
+//  return rdid.substring(0,4)+"-"+rdid.substring(4,6)+"-"+rdid.substring(6,8);
+//}
 
 new Vue({
   router,
