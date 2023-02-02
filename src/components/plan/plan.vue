@@ -1,6 +1,6 @@
 <!--计划界面-->
 <template>
-  <div>
+  <div class="page-content">
     <div style="margin-bottom: 5px;">
       <el-input v-model="topic" placeholder="请输入主题" suffix-icon="el-icon-search" style="width: 200px;"
         @keyup.enter.native="loadPost"></el-input>
@@ -63,7 +63,7 @@
             </el-radio-group>
           </el-col>
         </el-form-item>
-        <el-form-item label="选择格式" v-if="plan.flag==1">
+        <el-form-item label="选择格式" v-if="plan.flag == 1">
           <el-col :span="20">
             <el-radio-group v-model="plan.type">
               <el-radio-button label="指数"></el-radio-button>
@@ -74,6 +74,27 @@
           </el-col>
         </el-form-item>
         <!--富文本编辑器-->
+        <el-form-item label="内容:" prop="content">
+          <!-- 图片上传组件辅助 -->
+          <el-upload 
+            class="avatar-uploader" 
+            :action="editorOption.serverUrl" 
+            name="file" :show-file-list="false"
+            :on-success="uploadSuccess" 
+            :on-error="uploadError" 
+            :before-upload="beforeUpload" 
+            style="display: none;">
+          </el-upload>
+          <quill-editor 
+            class="editor" 
+            ref="myQuillEditor" 
+            v-model.lazy.trim="plan.content" 
+            :options="editorOption"
+            @blur="onEditorBlur($event)" 
+            @focus="onEditorFocus($event)" 
+            @ready="onEditorReady($event)"
+            @change="onEditorChange($event)" />
+        </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="writeVisible = false">取 消</el-button>
@@ -84,6 +105,31 @@
 </template>
 
 <script type="text/javascript">
+//定义编辑框功能区，具体的可到官网上查看
+const toolbarOptions = [
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+  [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+  [{ 'direction': 'rtl' }],                         // text direction
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'font': [] }],
+  [{ 'align': [] }],
+  ['link', 'image'],
+  ['clean']
+]
+
+//提交数据的方法，自己定义吧
+//import { shelfVehicle } from "@/api/disassemble"
+
+//从这儿往下5行是引入编辑框相关事宜，上面也有
+import { quillEditor } from "vue-quill-editor";
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.snow.css";
+import "quill/dist/quill.bubble.css";
+//import "@/config/quill/quill.scss";
 export default {
   name: "Plan",
   data() {
@@ -101,6 +147,34 @@ export default {
       pageSize: 10,
       pageNum: 1,
       total: 0,
+      //富文本配置
+      editorOption: {
+        placeholder: "请输入相关内容",
+        modules: {
+          toolbar: {
+            container: toolbarOptions,
+            handlers: {
+              'image': function (value) {
+                if (value) {
+                  document.querySelector('.avatar-uploader input').click()
+                } else {
+                  this.quill.format('image', false);
+                }
+              }
+            }
+          }
+        },
+        // 此项配置是选择图片之后的上传路径
+        serverUrl: "xxx"
+      },
+      //加载动画
+      loading: "",
+       //上传图片
+       fileList: [],
+        dialogImageUrl: "",
+        dialogVisible: false,
+        postFile: "",
+
     }
   },
   methods: {
@@ -145,17 +219,103 @@ export default {
     rowClass({ row, rowIndex }) {
       console.log(rowIndex) //表头行标号为0
       return 'background: gainsboro'
-    }
+    },
+    //监听富文本编辑框动向，敌不动我不动敌若动我乱动，还有个上传图片
+    onEditorChange({ editor, html, text }) {
+      // 此处三项可以自己在控制台打印
+      this.quillForm.content = html
+    },
+    //图片上传前，显示loading动画，element官网上的，可以自行查找
+    beforeUpload() {
+      this.loading = this.$loading({
+        lock: true,
+        text: '图片加载中，请稍后！',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      });
+    },
+    // 上传成功
+    uploadSuccess(res, file) {
+      // 获取富文本组件实例
+      let quill = this.$refs.myQuillEditor.quill
+      if (res.code == 200) {
+        // 获取光标所在位置
+        let length = quill.getSelection().index;
+        // 获取光标所在位置// 获取光标所在位置
+        quill.insertEmbed(length, 'image', res.message)
+        // 调整光标到最后
+        quill.setSelection(length + 1)
+      } else {
+        this.$message.error(res.message)
+      }
+      this.loading.close();
+    },
+    // 上传失败来到这里
+    uploadError() {
+      this.loading.close();
+      this.$message.error(res.message)
+    },
+
+    //监听编辑器事件，此处三个事件可以自己根据业务定义
+    onEditorBlur(quill) { },
+    onEditorFocus(quill) { },
+    onEditorReady(quill) { },
+
+    /* 下面是上传图片 */
+    //拿到图片对象
+    getFile(file, fileList) {
+      this.postFile = file.raw
+      this.fileList = fileList
+    },
+    //查看图片预览
+    handlePictureCardPreview(file) {
+      this.dialogImageUrl = file.url;
+      this.dialogVisible = true;
+    },
+    //删除图片
+    handleRemove(file, fileList) {
+      this.dialogImageUrl = ""
+      this.fileList = []
+      this.dialogVisible = false
+    },
   },
   beforeMount() {
     this.loadPost();
   },
   components: {
-    
+
   }
 }
 </script>
 
 <style lang="less" scoped>
+.page-content {
+    width: 100%;
+    height: 100%;
+ 
+    /deep/ .editor {
+      margin-top: 15px;
+ 
+      .ql-editor {
+        min-height: 300px;
+      }
+    }
+ 
+    .header {
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+ 
+    /deep/ .el-form {
+      .el-form-item {
+        max-width: 700px;
+      }
+    }
+ 
+    /* 此处是隐藏上传按钮的样式 */
+    /deep/ .disabled .el-upload--picture-card {
+      display: none;
+    }
+  }
 
 </style>
