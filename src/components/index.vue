@@ -25,7 +25,6 @@
 <script type="text/javascript">
 import Aside from './Aside.vue';
 import Header from './Header.vue';
-import Main from './Main.vue';
 
 
 export default {
@@ -55,7 +54,6 @@ export default {
     components: {
         Aside,
         Header,
-        Main
     }
 }
 </script>

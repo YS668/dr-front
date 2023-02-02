@@ -3,7 +3,7 @@
       <h1 style="font-size: 50px;">{{'欢迎你！'+user.name}}</h1>
       <el-descriptions  title="个人中心" :column="2" size="40" border>
           <el-descriptions-item>
-              <template slot="label">
+              <template slot="label" >
                   <i class="el-icon-s-custom"></i>
                   账号
               </template>
