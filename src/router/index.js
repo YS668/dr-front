@@ -60,12 +60,20 @@ const routes = [
                 component:()=>import('../components/plan/plan')
             },
             {
+                path:'/Write',
+                name:'write',
+                meta:{
+                    title:'写复盘'
+                },
+                component:()=>import('../components/plan/write')
+            },
+            {
                 path:'/ReviewArticle',
                 name:'reviewArticle',
                 meta:{
                     title:'复盘文章'
                 },
-                component:()=>import('../components/')
+                component:()=>import('../components/article/Article')
             },
             {
                 path:'/Forum',

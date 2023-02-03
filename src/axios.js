@@ -3,8 +3,8 @@ import Element from 'element-ui'
 //import router from './router'
 
 
-axios.defaults.baseURL = "http://localhost:8090"
-//axios.defaults.baseURL = "http://www.yifuday.top"
+//axios.defaults.baseURL = "http://localhost:8090"
+axios.defaults.baseURL = "http://www.yifuday.top"
 
 // 前置拦截
 axios.interceptors.request.use(config => {

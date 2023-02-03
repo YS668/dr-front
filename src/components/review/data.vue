@@ -4,51 +4,113 @@
     <el-table :data="tableData" :header-cell-style="rowClass" :default-sort="{ prop: 'rdid', order: 'descending' }"
       border style="width: 100%" highlight-current-row>
       <el-table-column fixed sortable prop="rdid" label="日期" width="110" align="left">
-        <span slot-scope="scope" >
+        <span slot-scope="scope">
           <el-tag effect="dark">{{ rdidFormat(scope.row.rdid) }}</el-tag>
         </span>
       </el-table-column>
       <el-table-column prop="historyHigh.length" label="历史新高" align="left">
-        <span slot-scope="scope" >
-          <a @click="getDetail(scope.row.historyHigh)"  style="text-decoration:underline;">{{ scope.row.historyHigh.length}}</a>
+        <template slot-scope="{}" slot="header">
+          <span>历史新高</span>
+          <el-tooltip class="item" effect="dark" content="问财：今日创历史新高，非ST，非4和8开头" placement="right">
+            <i class="el-icon-question" style="margin-left: 5px"></i>
+          </el-tooltip>
+        </template>
+        <span slot-scope="scope">
+          <a @click="getDetail(scope.row.historyHigh)" style="text-decoration:underline;">{{
+            scope.row.historyHigh.length
+          }}</a>
         </span>
       </el-table-column>
       <el-table-column prop="yearHigh" label="一年新高" align="left">
+        <template slot-scope="{}" slot="header">
+          <span>一年新高</span>
+          <el-tooltip class="item" effect="dark" content="问财：今日创一年新高，非ST，非4和8开头" placement="right">
+            <i class="el-icon-question" style="margin-left: 5px"></i>
+          </el-tooltip>
+        </template>
         <span slot-scope="scope" style="color: red;">
-          <a @click="getDetail(scope.row.yearHigh)"  style="text-decoration:underline;">{{ scope.row.yearHigh.length}}</a>
+          <a @click="getDetail(scope.row.yearHigh)" style="text-decoration:underline;">{{
+            scope.row.yearHigh.length
+          }}</a>
         </span>
       </el-table-column>
       <el-table-column prop="yearLow.length" label="一年新低" align="left">
+        <template slot-scope="{}" slot="header">
+          <span>一年新低</span>
+          <el-tooltip class="item" effect="dark" content="问财：今日创一年新低，非ST，非4和8开头" placement="right">
+            <i class="el-icon-question" style="margin-left: 5px"></i>
+          </el-tooltip>
+        </template>
         <span slot-scope="scope">
-          <a @click="getDetail(scope.row.yearLow)" style="text-decoration:underline;">{{ scope.row.yearLow.length}}</a>
+          <a @click="getDetail(scope.row.yearLow)" style="text-decoration:underline;">{{ scope.row.yearLow.length }}</a>
         </span>
       </el-table-column>
       <el-table-column prop="downLimit" label="跌停" align="left">
+        <template slot-scope="{}" slot="header">
+          <span>跌停</span>
+          <el-tooltip class="item" effect="dark" content="问财：今日跌停，非ST，非4和8开头" placement="right">
+            <i class="el-icon-question" style="margin-left: 5px"></i>
+          </el-tooltip>
+        </template>
         <span slot-scope="scope" style="color: red;">
-          <a @click="getDetail(scope.row.downLimit)" style="text-decoration:underline;">{{ scope.row.downLimit.length}}</a>
+          <a @click="getDetail(scope.row.downLimit)" style="text-decoration:underline;">{{
+            scope.row.downLimit.length
+          }}</a>
         </span>
       </el-table-column>
       <el-table-column prop="downFive.length" label="跌幅超5%" align="left">
-        <span slot-scope="scope" >
-          <a @click="getDetail(scope.row.downFive)" style="text-decoration:underline;">{{ scope.row.downFive.length}}</a>
+        <template slot-scope="{}" slot="header">
+          <span>跌幅超5%</span>
+          <el-tooltip class="item" effect="dark" content="问财：今日跌幅大于5%，非ST，非4和8开头" placement="right">
+            <i class="el-icon-question" style="margin-left: 5px"></i>
+          </el-tooltip>
+        </template>
+        <span slot-scope="scope">
+          <a @click="getDetail(scope.row.downFive)" style="text-decoration:underline;">{{
+            scope.row.downFive.length
+          }}</a>
         </span>
       </el-table-column>
       <el-table-column prop="upLimit" label="涨停" align="left">
+        <template slot-scope="{}" slot="header">
+          <span>涨停</span>
+          <el-tooltip class="item" effect="dark" content="问财：今日涨停，非ST，非4和8开头" placement="right">
+            <i class="el-icon-question" style="margin-left: 5px"></i>
+          </el-tooltip>
+        </template>
         <span slot-scope="scope" style="color: red;">
-          <a @click="getDetail(scope.row.upLimit)" style="text-decoration:underline;">{{ scope.row.upLimit.length}}</a>
+          <a @click="getDetail(scope.row.upLimit)" style="text-decoration:underline;">{{ scope.row.upLimit.length }}</a>
         </span>
       </el-table-column>
       <el-table-column prop="noOneUp.length" label="非一字涨停" align="left">
+        <template slot-scope="{}" slot="header">
+          <span>非一字涨停</span>
+          <el-tooltip class="item" effect="dark" content="问财：今日非一字涨停，非ST，非4和8开头" placement="right">
+            <i class="el-icon-question" style="margin-left: 5px"></i>
+          </el-tooltip>
+        </template>
         <span slot-scope="scope">
-          <a @click="getDetail(scope.row.noOneUp)" style="text-decoration:underline;">{{ scope.row.noOneUp.length}}</a>
+          <a @click="getDetail(scope.row.noOneUp)" style="text-decoration:underline;">{{ scope.row.noOneUp.length }}</a>
         </span>
       </el-table-column>
       <el-table-column prop="upFive.length" label="涨幅超5%" align="left">
-        <span slot-scope="scope" >
-          <a @click="getDetail(scope.row.upFive)" style="text-decoration:underline;">{{ scope.row.upFive.length}}</a>
+        <template slot-scope="{}" slot="header">
+          <span>涨幅超5%</span>
+          <el-tooltip class="item" effect="dark" content="问财：今日涨幅大于5%，非ST，非4和8开头" placement="right">
+            <i class="el-icon-question" style="margin-left: 5px"></i>
+          </el-tooltip>
+        </template>
+        <span slot-scope="scope">
+          <a @click="getDetail(scope.row.upFive)" style="text-decoration:underline;">{{ scope.row.upFive.length }}</a>
         </span>
       </el-table-column>
       <el-table-column prop="upAll" label="上涨家数" align="left">
+        <template slot-scope="{}" slot="header">
+          <span>上涨家数%</span>
+          <el-tooltip class="item" effect="dark" content="收盘时上涨家数" placement="right">
+            <i class="el-icon-question" style="margin-left: 5px"></i>
+          </el-tooltip>
+        </template>
         <span slot-scope="scope" style="color: red;">
           {{ scope.row.upAll }}
         </span>
@@ -69,31 +131,33 @@
       :page-sizes="[1, 5, 10, 20, 30]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
-      <el-dialog :visible.sync="detailVisible" width="80%"
-                center title="详情">
+    <el-dialog :visible.sync="detailVisible" width="80%" center title="详情">
       <div style="text-align:center">
         <!--需要弹出的内容部分-->
-        <el-table :data="dialog.slice((dialogPageNum-1)*dialogPageSize,dialogPageNum*dialogPageSize)" :header-cell-style="rowClass" border style="width: 100%" highlight-current-row>
+        <el-table :data="dialog.slice((dialogPageNum - 1) * dialogPageSize, dialogPageNum * dialogPageSize)"
+          :header-cell-style="rowClass" border style="width: 100%" highlight-current-row>
           <el-table-column fixed prop="stockCode" label="股票代码" align="left">
           </el-table-column>
           <el-table-column prop="stockName" label="股票名称" align="left">
           </el-table-column>
-          <el-table-column  prop="nowPrice" label="现价" align="left">
+          <el-table-column prop="nowPrice"  label="现价" align="left">
           </el-table-column>
-          <el-table-column  prop="trend" label="涨幅" align="left">
+          <el-table-column prop="trend"  label="涨幅" align="left">
           </el-table-column>
-          <el-table-column  prop="turnover" label="成交额" align="left">
+          <el-table-column prop="turnover"  label="成交额" align="left">
           </el-table-column>
           <el-table-column prop="xueQiuLink" label="雪球" align="left">
             <span slot-scope="scope">
-              <a :href=scope.row.xueQiuLink target="_blank">跳转</a>
+              <a :href=scope.row.xueQiuLink target="_blank">
+                <i class="el-icon-link" style="font-size: 20px"></i>
+              </a>
             </span>
           </el-table-column>
         </el-table>
-        <el-pagination @size-change="dialogSizeChange" @current-change="dialogCurrentChange" :current-page="dialogPageNum"
-         :page-sizes="[5, 10, 20, 30]" :page-size="dialogPageSize" layout="total, sizes, prev, pager, next, jumper"
-         :total=dialogTotal>
-      </el-pagination>
+        <el-pagination @size-change="dialogSizeChange" @current-change="dialogCurrentChange"
+          :current-page="dialogPageNum" :page-sizes="[5, 10, 20, 30]" :page-size="dialogPageSize"
+          layout="total, sizes, prev, pager, next, jumper" :total=dialogTotal>
+        </el-pagination>
       </div>
     </el-dialog>
   </div>
@@ -105,10 +169,10 @@ export default {
   data() {
     return {
       tableData: [],
-      dialog:[],
-      dialogPageSize:10,
+      dialog: [],
+      dialogPageSize: 10,
       dialogPageNum: 1,
-      dialogTotal:0,
+      dialogTotal: 0,
       pageSize: 10,
       pageNum: 1,
       total: 0,

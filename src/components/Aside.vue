@@ -12,7 +12,7 @@
             <i class="el-icon-s-home"></i>
             <span slot="title">首页</span>
         </el-menu-item>
-        <el-submenu >
+        <el-submenu index="1" >
             <template slot="title" :collapse="isCollapse" >
                 <i class="el-icon-message"></i>
                 <span slot="title">复盘数据</span>
@@ -23,10 +23,15 @@
             <el-menu-item index="/Up">上涨家数</el-menu-item>
             <el-menu-item index="/UpLimit">涨停股</el-menu-item>
         </el-submenu>
-        <el-menu-item index="/ReviewPlan">
-            <i class="el-icon-s-home"></i>
-            <span slot="title">复盘计划</span>
-        </el-menu-item>
+        <el-submenu index="2">
+            <template slot="title" :collapse="isCollapse" >
+                <i class="el-icon-message"></i>
+                <span slot="title">复盘计划</span>
+            </template>
+            <!--index标签为页面-->
+            <el-menu-item index="/ReviewPlan">我的复盘</el-menu-item>
+            <el-menu-item index="/Write">写复盘</el-menu-item>
+        </el-submenu>
         <el-menu-item index="/ReviewArticle">
             <i class="el-icon-s-home"></i>
             <span slot="title">复盘文章</span>
