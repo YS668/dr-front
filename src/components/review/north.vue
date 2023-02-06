@@ -1,40 +1,39 @@
 <!--北向资金界面-->
 <template>
-    <div>
-    <el-table :data="tableData" :header-cell-style="rowClass" :default-sort = "{prop: 'rdid', order: 'descending'}" border style="width: 100%" highlight-current-row>
+  <div>
+    <el-table :data="tableData" :header-cell-style="rowClass" :default-sort="{ prop: 'rdid', order: 'descending' }" border
+      style="width: 100%" highlight-current-row>
       <el-table-column fixed sortable prop="rdid" width="110" label="日期" align="left">
         <span slot-scope="scope">
           <el-tag effect="dark">{{ rdidFormat(scope.row.rdid) }}</el-tag>
         </span>
       </el-table-column>
       <el-table-column prop="northAll" label="北向净买入" align="left">
-        <span slot-scope="scope" style="color: red;">
+        <span slot-scope="scope" :class="(scope.row.northAll.slice(0,1) =='-') ? 'green':'red' ">
           {{ scope.row.northAll }}
         </span>
       </el-table-column>
-      <el-table-column prop="shIndex" label="上证指数" align="left">
+      <el-table-column  prop="shIndex" label="上证指数" align="left">
+        <span slot-scope="scope" :class="(scope.row.shIndex.slice(0,1) =='-') ? 'green':'red' ">
+          {{ scope.row.shIndex }}
+        </span>
       </el-table-column>
       <el-table-column prop="hgtb" label="沪股通净买入" align="left">
       </el-table-column>
       <el-table-column prop="sgtb" label="深股通净买入" align="left">
       </el-table-column>
     </el-table>
-    <el-pagination 
-      @size-change="handleSizeChange" 
-      @current-change="handleCurrentChange" 
-      :current-page="pageNum"
-      :page-sizes="[1,5, 10, 20, 30]" 
-      :page-size="pageSize" 
-      layout="total, sizes, prev, pager, next, jumper"
+    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
+      :page-sizes="[10, 30, 50, 100]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
   </div>
-  </template>
-  
-  <script type="text/javascript">
-  export default {
-    name: "North",
-    data() {
+</template>
+
+<script type="text/javascript">
+export default {
+  name: "North",
+  data() {
     return {
       tableData: [],
       pageSize: 10,
@@ -45,10 +44,10 @@
   methods: {
     loadPost() {
       this.$axios.post('/north/page', {
-        pageSize:this.pageSize,
-        pageNum:this.pageNum,
-        param:{
-          
+        pageSize: this.pageSize,
+        pageNum: this.pageNum,
+        param: {
+
         }
       }).then(res => {
         if (res.code == 200) {
@@ -57,7 +56,7 @@
             type: 'success'
           });
           this.tableData = res.data
-          this.total=res.total
+          this.total = res.total
         } else {
           this.$message({
             message: '操作失败！',
@@ -81,9 +80,9 @@
       this.loadPost()
     },
     //设置表头的颜色
-    rowClass({ row, rowIndex}) {
-        console.log(rowIndex) //表头行标号为0
-        return 'background: gainsboro'
+    rowClass({ row, rowIndex }) {
+      console.log(rowIndex) //表头行标号为0
+      return 'background: gainsboro'
     }
   },
   beforeMount() {
@@ -91,8 +90,15 @@
   },
   components: {
   }
-  }
-  </script>
-  
-  <style lang="less" scoped>
-  </style>
+}
+</script>
+
+<style lang="less" scoped>
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+</style>

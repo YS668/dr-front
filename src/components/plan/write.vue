@@ -3,15 +3,15 @@
         <div style="text-align: center;">
             <DateUtils></DateUtils>
         </div>
-        <el-form ref="plan" :model="plan" label-width="80px">
+        <el-form ref="plan" :model="fromData" label-width="80px">
             <el-form-item :required="required" label="题目">
                 <el-col :span="20">
-                    <el-input v-model="plan.topic"></el-input>
+                    <el-input v-model="fromData.topic"></el-input>
                 </el-col>
             </el-form-item>
             <el-form-item label="复盘类型">
                 <el-col :span="20">
-                    <el-radio-group v-model="plan.type">
+                    <el-radio-group v-model="fromData.type">
                         <el-radio-button label="1">日复盘</el-radio-button>
                         <el-radio-button label="2">周总结</el-radio-button>
                         <el-radio-button label="3">月总结</el-radio-button>
@@ -22,7 +22,7 @@
             <el-form-item label="复盘模式">
                 <el-col :span="20">
                     <!--click 还没有更新到data change已经更新到了-->
-                    <el-radio-group v-model="plan.flag" @click.native="from" @change="to">
+                    <el-radio-group v-model="fromData.flag" @click.native="from" @change="to">
                         <el-radio-button label="1">固定格式</el-radio-button>
                         <el-radio-button label="2">全文</el-radio-button>
                     </el-radio-group>
@@ -32,9 +32,9 @@
 
                 </el-col>
             </el-form-item>
-            <el-form-item label="选择格式" v-if="plan.flag == 1">
+            <el-form-item label="选择格式" v-if="fromData.flag == 1">
                 <el-col :span="20">
-                    <el-radio-group v-model="plan.format" @click.native="from" @change="to">
+                    <el-radio-group v-model="fromData.format" @click.native="from" @change="to">
                         <el-radio-button label="1">指数</el-radio-button>
                         <el-radio-button label="2">板块</el-radio-button>
                         <el-radio-button label="3">计划</el-radio-button>
@@ -44,7 +44,7 @@
             </el-form-item>
             <!--富文本编辑器-->
             <el-form-item label="内容:" prop="content">
-                <tinymce-editor v-model="plan.temp"></tinymce-editor>
+                <tinymce-editor v-model="fromData.temp"></tinymce-editor>
 
             </el-form-item>
             <el-form-item>
@@ -65,8 +65,8 @@ export default {
     name: "Write",
     data() {
         return {
-            required:true,
-            plan: {
+            required: true,
+            fromData: {
                 uid: '',
                 topic: '',
                 type: '1',
@@ -91,7 +91,7 @@ export default {
     methods: {
         //注意判断temp是否为空
         save() {
-            if (this.noData() || (this.plan.topic == null || this.plan.topic == '')) {
+            if (this.noData() || (this.fromData.topic == null || this.fromData.topic == '')) {
                 this.$notify.error({
                     title: '错误',
                     message: '您还没有填写内容/题目，请填写完成再提交',
@@ -99,38 +99,53 @@ export default {
                 });
                 return
             }
-            if (this.plan.flag == 1) {
-                this.plan.content = "指数：" + this.plan.i + "\n" +
-                    "板块：" + this.plan.b + "\n" +
-                    "计划：" + this.plan.p + "\n" +
-                    "反思：" + this.plan.f + "\n"
+            if (this.fromData.flag == 1) {
+                this.fromData.content = "<h3 style=\"font-weight:800; color: black;font-size: 20px;\">指数：</h3>" + this.fromData.i + "<br>" +
+                    "<h3 style=\"font-weight:800; color: black;font-size: 20px;\">板块：</h3>" + this.fromData.b + "<br>" +
+                    "<h3 style=\"font-weight:800; color: black;font-size: 20px;\">计划：</h3>" + this.fromData.p + "<br>" +
+                    "<h3 style=\"font-weight:800; color: black;font-size: 20px;\">反思：</h3>" + this.fromData.f 
             }
-            console.log(this.plan.content)
-            //清空表单
-            this.reset()
-            //跳转页面
-            this.$notify.success({
-                    title: '成功',
-                    message: '已经提交，坚持明天会更好',
-                    offset: 100
-                });
-            this.$router.replace("/ReviewPlan")
+            this.$axios.post('/review/plan/save',{
+                uid: "1",
+                topic: this.fromData.topic,
+                type: this.fromData.type,
+                flag: this.fromData.flag,
+                content: this.fromData.content,
+            }).then(res => {
+                if (res.code == 200) {
+                    //清空表单
+                    this.reset()
+                    this.$notify.success({
+                        title: '成功',
+                        message: '已经提交，坚持明天会更好',
+                        offset: 100
+                    });
+                    //跳转页面
+                    this.$router.replace("/ReviewPlan")
+                } else {
+                    this.$notify.error({
+                        title: '失败',
+                        message: '提交失败请稍后重试',
+                        offset: 100
+                    });
+                }
+            })
         },
         //判断内容是否为空,并转移最后一次temp
-        noData(){
-            //最后一次转移
-            if (this.plan.temp != null && this.plan.temp != '') {
+        noData() {
+                //最后一次转移
+                if(this.fromData.temp != null && this.fromData.temp != '') {
                 this.from();
             }
             //有数据
-            if (this.plan.flag == 2 && (this.plan.content != null && this.plan.content != '')) {
+            if (this.fromData.flag == 2 && (this.fromData.content != null && this.fromData.content != '')) {
                 return false;
             }
             //有数据
-            if (this.plan.flag == 1 && ((this.plan.i != null && this.plan.i != '')
-                || (this.plan.b != null && this.plan.b != '')
-                || (this.plan.p != null && this.plan.p != '')
-                || (this.plan.f != null && this.plan.f != ''))) {
+            if (this.fromData.flag == 1 && ((this.fromData.i != null && this.fromData.i != '')
+                || (this.fromData.b != null && this.fromData.b != '')
+                || (this.fromData.p != null && this.fromData.p != '')
+                || (this.fromData.f != null && this.fromData.f != ''))) {
                 return false;
             }
             //无数据
@@ -138,94 +153,94 @@ export default {
         },
         //清空表单
         reset() {
-            this.plan.uid = '',
-                this.plan.topic = '',
-                this.plan.type = '1',
-                this.plan.flag = '1',
-                this.plan.content = '',
+            this.fromData.uid = '',
+                this.fromData.topic = '',
+                this.fromData.type = '1',
+                this.fromData.flag = '1',
+                this.fromData.content = '',
                 //格式
-                this.plan.format = '1',
+                this.fromData.format = '1',
                 //指数
-                this.plan.i = '',
+                this.fromData.i = '',
                 //板块
-                this.plan.b = '',
+                this.fromData.b = '',
                 //计划
-                this.plan.p = '',
+                this.fromData.p = '',
                 //反思
-                this.plan.f = '',
+                this.fromData.f = '',
                 //临时值
-                this.plan.temp = ''
+                this.fromData.temp = ''
         },
         //变化前
         from() {
-            if (this.plan.temp == null || this.plan.temp == '') {
+            if (this.fromData.temp == null || this.fromData.temp == '') {
                 return
             } else {
                 //全文
-                if (this.plan.flag == 2) {
+                if (this.fromData.flag == 2) {
                     console.log("点击前全文")
                     //转移数据
-                    this.plan.content = this.plan.temp
+                    this.fromData.content = this.fromData.temp
                     //固定格式    
                 } else {
                     console.log("点击前固定格式")
                     //转移数据
                     //指数
-                    if (this.plan.format == 1) {
+                    if (this.fromData.format == 1) {
                         console.log("点击前指数")
-                        this.plan.i = this.plan.temp
+                        this.fromData.i = this.fromData.temp
                     }
                     //板块
-                    if (this.plan.format == 2) {
+                    if (this.fromData.format == 2) {
                         console.log("点击前板块")
-                        this.plan.b = this.plan.temp
+                        this.fromData.b = this.fromData.temp
                     }
                     //计划
-                    if (this.plan.format == 3) {
+                    if (this.fromData.format == 3) {
                         console.log("点击前计划")
-                        this.plan.p = this.plan.temp
+                        this.fromData.p = this.fromData.temp
                     }
                     //反思
-                    if (this.plan.format == 4) {
+                    if (this.fromData.format == 4) {
                         console.log("点击前反思")
-                        this.plan.f = this.plan.temp
+                        this.fromData.f = this.fromData.temp
 
                     }
                 }
                 //清空绑定内容
-                this.plan.temp = ''
+                this.fromData.temp = ''
             }
         },
         //变化后
         to() {
             //全文
-            if (this.plan.flag == 2) {
+            if (this.fromData.flag == 2) {
                 console.log("变化后全文")
                 //转移数据
-                this.plan.temp = this.plan.content
+                this.fromData.temp = this.fromData.content
                 //固定格式    
             } else {
                 console.log("变化后固定格式")
                 //转移数据
                 //指数
-                if (this.plan.format == 1) {
+                if (this.fromData.format == 1) {
                     console.log("变化后指数")
-                    this.plan.temp = this.plan.i
+                    this.fromData.temp = this.fromData.i
                 }
                 //板块
-                if (this.plan.format == 2) {
+                if (this.fromData.format == 2) {
                     console.log("变化后板块")
-                    this.plan.temp = this.plan.b
+                    this.fromData.temp = this.fromData.b
                 }
                 //计划
-                if (this.plan.format == 3) {
+                if (this.fromData.format == 3) {
                     console.log("变化后计划")
-                    this.plan.temp = this.plan.p
+                    this.fromData.temp = this.fromData.p
                 }
                 //反思
-                if (this.plan.format == 4) {
+                if (this.fromData.format == 4) {
                     console.log("变化后反思")
-                    this.plan.temp = this.plan.f
+                    this.fromData.temp = this.fromData.f
                 }
             }
         },

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Editor id="tinymce" v-model="value" :init="init"></Editor>
+        <!--<Editor id="tinymce" v-model="value" :init="init"></Editor>-->
     </div>
 </template>
 

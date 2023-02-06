@@ -8,25 +8,46 @@
         </span>
       </el-table-column>
       <el-table-column prop="ninetfup" label="9点25" align="left">
+        <span slot-scope="scope" :class="(scope.row.ninetfup > 3000) ? 'red':'' ">
+          {{ scope.row.ninetfup }}
+        </span>
       </el-table-column>
       <el-table-column prop="tenup" label="10点" align="left">
+        <span slot-scope="scope" :class="(scope.row.tenup > 3000) ? 'red':'' ">
+          {{ scope.row.tenup }}
+        </span>
       </el-table-column>
       <el-table-column prop="elevenup" label="11点" align="left">
+        <span slot-scope="scope" :class="(scope.row.elevenup > 3000) ? 'red':'' ">
+          {{ scope.row.elevenup }}
+        </span>
       </el-table-column>
       <el-table-column prop="thirteenup" label="13点" align="left">
+        <span slot-scope="scope" :class="(scope.row.thirteenup > 3000) ? 'red':'' ">
+          {{ scope.row.thirteenup }}
+        </span>
       </el-table-column>
       <el-table-column prop="fourteenup" label="14点" align="left">
+        <span slot-scope="scope" :class="(scope.row.fourteenup > 3000) ? 'red':'' ">
+          {{ scope.row.fourteenup }}
+        </span>
       </el-table-column>
       <el-table-column prop="fourteentheup" label="14点30" align="left">
+        <span slot-scope="scope" :class="(scope.row.fourteentheup > 3000) ? 'red':'' ">
+          {{ scope.row.fourteentheup }}
+        </span>
       </el-table-column>
       <el-table-column prop="fifteenup" label="15点" align="left">
+        <span slot-scope="scope" :class="(scope.row.fifteenup > 3000) ? 'red':'' ">
+          {{ scope.row.fifteenup }}
+        </span>
       </el-table-column>
     </el-table>
     <el-pagination 
       @size-change="handleSizeChange" 
       @current-change="handleCurrentChange" 
       :current-page="pageNum"
-      :page-sizes="[1,5, 10, 20, 30]" 
+      :page-sizes="[10,30,50,100]" 
       :page-size="pageSize" 
       layout="total, sizes, prev, pager, next, jumper"
       :total="total">
@@ -98,4 +119,10 @@
   </script>
   
   <style lang="less" scoped>
+  .red {
+ color: red;
+}
+.green {
+ color: green;
+}
   </style>

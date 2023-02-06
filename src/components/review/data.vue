@@ -15,7 +15,7 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope">
+        <span slot-scope="scope" :class="(scope.row.historyHigh.length > 10) ? 'red':'' ">
           <a @click="getDetail(scope.row.historyHigh)" style="text-decoration:underline;">{{
             scope.row.historyHigh.length
           }}</a>
@@ -28,8 +28,8 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope" style="color: red;">
-          <a @click="getDetail(scope.row.yearHigh)" style="text-decoration:underline;">{{
+        <span slot-scope="scope" >
+          <a @click="getDetail(scope.row.yearHigh)" :class="(scope.row.yearHigh.length > 70) ? 'red':'' " style="text-decoration:underline;">{{
             scope.row.yearHigh.length
           }}</a>
         </span>
@@ -52,7 +52,7 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope" style="color: red;">
+        <span slot-scope="scope" :class="(scope.row.downLimit.length > 5) ? 'red':'' ">
           <a @click="getDetail(scope.row.downLimit)" style="text-decoration:underline;">{{
             scope.row.downLimit.length
           }}</a>
@@ -78,7 +78,7 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope" style="color: red;">
+        <span slot-scope="scope" :class="(scope.row.upLimit.length > 80) ? 'red':'' ">
           <a @click="getDetail(scope.row.upLimit)" style="text-decoration:underline;">{{ scope.row.upLimit.length }}</a>
         </span>
       </el-table-column>
@@ -89,7 +89,7 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope">
+        <span slot-scope="scope" :class="(scope.row.noOneUp.length > 70) ? 'red':'' ">
           <a @click="getDetail(scope.row.noOneUp)" style="text-decoration:underline;">{{ scope.row.noOneUp.length }}</a>
         </span>
       </el-table-column>
@@ -100,7 +100,7 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope">
+        <span slot-scope="scope" :class="(scope.row.upFive.length > 300) ? 'red':'' ">
           <a @click="getDetail(scope.row.upFive)" style="text-decoration:underline;">{{ scope.row.upFive.length }}</a>
         </span>
       </el-table-column>
@@ -111,24 +111,33 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope" style="color: red;">
+        <span slot-scope="scope" :class="(scope.row.upAll > 3000) ? 'red':'' ">
           {{ scope.row.upAll }}
         </span>
       </el-table-column>
       <el-table-column prop="sh_INDEX" label="上证指数" align="left">
+        <span slot-scope="scope" :class="(scope.row.sh_INDEX.slice(0,1) =='-') ? 'green':'red' ">
+          {{ scope.row.sh_INDEX }}
+        </span>
       </el-table-column>
       <el-table-column prop="sz_INDEX" label="深证成指" align="center">
+        <span slot-scope="scope" :class="(scope.row.sz_INDEX.slice(0,1) =='-') ? 'green':'red' ">
+          {{ scope.row.sz_INDEX }}
+        </span>
       </el-table-column>
       <el-table-column prop="business_INDEX" label="创业板指" align="center">
+        <span slot-scope="scope" :class="(scope.row.business_INDEX.slice(0,1) =='-') ? 'green':'red' ">
+          {{ scope.row.business_INDEX }}
+        </span>
       </el-table-column>
       <el-table-column prop="turnOver" label="成交额" align="center">
-        <span slot-scope="scope" style="color: red;">
+        <span slot-scope="scope" :class="(scope.row.turnOver.slice(0,1) =='9' || scope.row.turnOver.slice(0,1) =='1') ? 'red':'' ">
           {{ scope.row.turnOver }}
         </span>
       </el-table-column>
     </el-table>
     <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
-      :page-sizes="[1, 5, 10, 20, 30]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+      :page-sizes="[10,30,50,100]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
     <el-dialog :visible.sync="detailVisible" width="80%" center title="详情">
@@ -143,19 +152,23 @@
           <el-table-column prop="nowPrice"  label="现价" align="left">
           </el-table-column>
           <el-table-column prop="trend"  label="涨幅" align="left">
+            <span slot-scope="scope" :class="(scope.row.trend.slice(0,1) =='-') ? 'green':'red' ">
+          {{ scope.row.trend }}
+        </span>
           </el-table-column>
           <el-table-column prop="turnover"  label="成交额" align="left">
           </el-table-column>
-          <el-table-column prop="xueQiuLink" label="雪球" align="left">
+          <el-table-column  label="链接" align="left">
             <span slot-scope="scope">
-              <a :href=scope.row.xueQiuLink target="_blank">
-                <i class="el-icon-link" style="font-size: 20px"></i>
-              </a>
+              <a :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">雪球</a>
+              <a :href=scope.row.taoGuLink target="_blank" style="margin-left: 6px">淘股吧</a>
+              <a :href=scope.row.dongFangLink target="_blank" style="margin-left: 6px">东方财富</a>
+              <a :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">同花顺</a>
             </span>
           </el-table-column>
         </el-table>
         <el-pagination @size-change="dialogSizeChange" @current-change="dialogCurrentChange"
-          :current-page="dialogPageNum" :page-sizes="[5, 10, 20, 30]" :page-size="dialogPageSize"
+          :current-page="dialogPageNum" :page-sizes="[10,30,50,100]" :page-size="dialogPageSize"
           layout="total, sizes, prev, pager, next, jumper" :total=dialogTotal>
         </el-pagination>
       </div>
@@ -247,5 +260,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.red {
+ color: red;
+}
+.green {
+ color: green;
+}
 
 </style>

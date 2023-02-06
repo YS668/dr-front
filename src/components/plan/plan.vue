@@ -28,9 +28,13 @@
       </el-table-column>
     </el-table>
     <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
-      :page-sizes="[1, 5, 10, 20, 30]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+      :page-sizes="[10, 20, 30]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
+    <el-dialog :visible.sync="dialogVisible" width="80%" center title="复盘内容">
+      <div   v-html="strHtml" class="ql-editor">
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -41,6 +45,8 @@ export default {
   name: "Plan",
   data() {
     return {
+      dialogVisible: false,
+      strHtml:'',
       tableData: [],
       topic: '',
       pageSize: 10,
@@ -91,7 +97,11 @@ export default {
       console.log(rowIndex) //表头行标号为0
       return 'background: gainsboro'
     },
-    
+    //查看复盘内容
+    getContent(val){
+      this.strHtml = val
+      this.dialogVisible = true
+    }
   },
   beforeMount() {
     this.loadPost();

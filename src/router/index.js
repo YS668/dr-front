@@ -3,6 +3,9 @@ const routes = [
     {
         path: '/',
         name: 'login',
+        meta:{
+            title:'易复天天-登录页面'
+        },
         component: () => import('../components/Login')
     },
     {
@@ -15,7 +18,7 @@ const routes = [
                 path:'/Home',
                 name:'home',
                 meta:{
-                    title:'首页'
+                    title:'易复天天-首页'
                 },
                 component:()=>import('../components/Home')
             },
@@ -23,7 +26,7 @@ const routes = [
                 path:'/Data',
                 name:'data',
                 meta:{
-                    title:'复盘数据'
+                    title:'易复天天-复盘数据'
                 },
                 component:()=>import('../components/review/data')
             },
@@ -31,7 +34,7 @@ const routes = [
                 path:'/North',
                 name:'north',
                 meta:{
-                    title:'北向资金'
+                    title:'易复天天-北向资金'
                 },
                 component:()=>import('../components/review/north')
             },
@@ -39,7 +42,7 @@ const routes = [
                 path:'/Up',
                 name:'up',
                 meta:{
-                    title:'上涨家数'
+                    title:'易复天天-上涨家数'
                 },
                 component:()=>import('../components/review/up')
             },
@@ -47,7 +50,7 @@ const routes = [
                 path:'/UpLimit',
                 name:'upLimit',
                 meta:{
-                    title:'涨停股'
+                    title:'易复天天-涨停股'
                 },
                 component:()=>import('../components/review/upLimit')
             },
@@ -55,7 +58,7 @@ const routes = [
                 path:'/ReviewPlan',
                 name:'reviewPlan',
                 meta:{
-                    title:'复盘计划'
+                    title:'易复天天-我的复盘'
                 },
                 component:()=>import('../components/plan/plan')
             },
@@ -63,7 +66,7 @@ const routes = [
                 path:'/Write',
                 name:'write',
                 meta:{
-                    title:'写复盘'
+                    title:'易复天天-写复盘'
                 },
                 component:()=>import('../components/plan/write')
             },
@@ -71,7 +74,7 @@ const routes = [
                 path:'/ReviewArticle',
                 name:'reviewArticle',
                 meta:{
-                    title:'复盘文章'
+                    title:'易复天天-复盘文章'
                 },
                 component:()=>import('../components/article/Article')
             },
@@ -79,7 +82,7 @@ const routes = [
                 path:'/Forum',
                 name:'forum',
                 meta:{
-                    title:'讨论区'
+                    title:'易复天天-讨论区'
                 },
                 component:()=>import('../components/forum/forum')
             },
@@ -87,7 +90,7 @@ const routes = [
                 path:'/Notice',
                 name:'notice',
                 meta:{
-                    title:'建议与反馈'
+                    title:'易复天天-公告'
                 },
                 component:()=>import('../components/notice/notice')
             },
@@ -95,7 +98,7 @@ const routes = [
                 path:'/Recomm',
                 name:'recommice',
                 meta:{
-                    title:'建议与反馈'
+                    title:'易复天天-建议与反馈'
                 },
                 component:()=>import('../components/recomm/recomm')
             },
@@ -109,4 +112,16 @@ const router = new VueRouter({
     routes
 })
 
+router.beforeEach((to, from, next) => {
+
+    if (to.meta.title) {
+  
+      document.title = to.meta.title
+  
+    }
+  
+    next()
+  
+  })
+  
 export default router;
