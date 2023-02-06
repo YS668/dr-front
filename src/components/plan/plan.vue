@@ -18,8 +18,14 @@
       </el-table-column>
       <!--日周月年-->>
       <el-table-column prop="type" label="类型" align="left">
+        <span slot-scope="scope" >
+          {{ getType(scope.row.type)  }}
+        </span>
       </el-table-column>
       <el-table-column prop="flag" label="复盘模式" align="left">
+        <span slot-scope="scope" >
+          {{ getFlag(scope.row.flag) }}
+        </span>
       </el-table-column>
       <el-table-column prop="operate" label="操作">
         <template slot-scope="scope">
@@ -101,6 +107,30 @@ export default {
     getContent(val){
       this.strHtml = val
       this.dialogVisible = true
+    },
+    //复盘类型
+    getType(val){
+      if(val == 1){
+        return "日复盘"
+      }
+      if(val == 2){
+        return "周复盘"
+      }
+      if(val == 3){
+        return "月总结"
+      }
+      if(val == 4){
+        return "年总结"
+      }
+    },
+    //复盘模式
+    getFlag(val){
+      if(val == 1){
+        return "固定格式"
+      }
+      if(val == 2){
+        return "全文"
+      }
     }
   },
   beforeMount() {

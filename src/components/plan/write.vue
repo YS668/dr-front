@@ -48,7 +48,7 @@
 
             </el-form-item>
             <el-form-item>
-                <div style="text-align: center;">
+                <div style="text-align: left;">
                     <el-button type="primary" @click="save">确 定</el-button>
                     <el-button>取 消</el-button>
                 </div>

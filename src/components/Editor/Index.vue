@@ -35,7 +35,8 @@ export default {
                 selector: "#tinymce", //tinymce的id
                 language: "zh_CN", //语言类型
                 skin_url: '/tinymce/skins/ui/oxide',
-                height: 500, //编辑器高度
+                height: 380, //编辑器高度
+                width: 1000, //宽度
                 menubar:'', //菜单栏
                 browser_spellcheck: true, // 拼写检查
                 // elementpath: false, //禁用编辑器底部的状态栏
