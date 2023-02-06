@@ -29,7 +29,7 @@
       </el-table-column>
       <el-table-column prop="operate" label="操作">
         <template slot-scope="scope">
-          <el-button size="small" type="success" @click="getContent(scope.row.content)">查看</el-button>
+          <el-button size="small" type="success" @click="getContent(scope.row.content,scope.row.type,scope.row.rdid)">查看</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -37,7 +37,7 @@
       :page-sizes="[10, 20, 30]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
-    <el-dialog :visible.sync="dialogVisible" width="80%" center title="复盘内容">
+    <el-dialog :visible.sync="dialogVisible" width="50%" center :title="tit">
       <div   v-html="strHtml" class="ql-editor">
       </div>
     </el-dialog>
@@ -58,6 +58,7 @@ export default {
       pageSize: 10,
       pageNum: 1,
       total: 0,
+      tit: '',
     }
   },
   methods: {
@@ -104,9 +105,10 @@ export default {
       return 'background: gainsboro'
     },
     //查看复盘内容
-    getContent(val){
+    getContent(val,type,rdid){
       this.strHtml = val
       this.dialogVisible = true
+      this.tit = rdid+this.getType(type)
     },
     //复盘类型
     getType(val){
