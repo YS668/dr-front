@@ -2,7 +2,7 @@
     <el-menu 
         background-color=" antiquewhite" 
         ext-color="black" 
-        active-text-color="#ffd04b" 
+        active-text-color="#027aff" 
         style="height: 100%;"
         :collapse="isCollapse" 
         :collapse-transition="false"
