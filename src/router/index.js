@@ -55,6 +55,14 @@ const routes = [
                 component:()=>import('../components/review/upLimit')
             },
             {
+                path:'/Hot',
+                name:'hot',
+                meta:{
+                    title:'易复天天-平台热股'
+                },
+                component:()=>import('../components/review/hot')
+            },
+            {
                 path:'/ReviewPlan',
                 name:'reviewPlan',
                 meta:{

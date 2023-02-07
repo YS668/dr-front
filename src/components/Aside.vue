@@ -42,6 +42,12 @@
                     <i class="el-icon-question" style="margin-left: 5px"></i>
                  </el-tooltip>
             </el-menu-item>
+            <el-menu-item index="/Hot">
+                <span>平台热股</span>
+                <el-tooltip class="item" effect="dark" content="每5分钟刷新" placement="right">
+                    <i class="el-icon-question" style="margin-left: 5px"></i>
+                 </el-tooltip>
+            </el-menu-item>
         </el-submenu>
         <el-submenu index="2">
             <template slot="title" :collapse="isCollapse" >
