@@ -18,10 +18,30 @@
                 <span slot="title">复盘数据</span>
             </template>
             <!--index标签为页面-->
-            <el-menu-item index="/Data">总体数据</el-menu-item>
-            <el-menu-item index="/North">北向资金</el-menu-item>
-            <el-menu-item index="/Up">上涨家数</el-menu-item>
-            <el-menu-item index="/UpLimit">涨停股</el-menu-item>
+            <el-menu-item index="/Data">
+                <span>总体数据</span>
+                <el-tooltip class="item" effect="dark" content="15点10分更新" placement="right">
+                    <i class="el-icon-question" style="margin-left: 5px"></i>
+                 </el-tooltip>
+            </el-menu-item>
+            <el-menu-item index="/North">
+                <span>北向资金</span>
+                <el-tooltip class="item" effect="dark" content="15点10分更新" placement="right">
+                    <i class="el-icon-question" style="margin-left: 5px"></i>
+                 </el-tooltip>
+            </el-menu-item>
+            <el-menu-item index="/Up">
+                <span>上涨家数</span>
+                <el-tooltip class="item" effect="dark" content="15点10分更新" placement="right">
+                    <i class="el-icon-question" style="margin-left: 5px"></i>
+                 </el-tooltip>
+            </el-menu-item>
+            <el-menu-item index="/UpLimit">
+                <span>涨停股</span>
+                <el-tooltip class="item" effect="dark" content="15点10分更新" placement="right">
+                    <i class="el-icon-question" style="margin-left: 5px"></i>
+                 </el-tooltip>
+            </el-menu-item>
         </el-submenu>
         <el-submenu index="2">
             <template slot="title" :collapse="isCollapse" >
