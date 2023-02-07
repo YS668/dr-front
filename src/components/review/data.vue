@@ -2,7 +2,7 @@
 <template>
   <div>
     <el-table :data="tableData" :header-cell-style="rowClass" :default-sort="{ prop: 'rdid', order: 'descending' }"
-      border style="width: 100%" highlight-current-row>
+      border style="width: 100%" max-height="800" highlight-current-row>
       <el-table-column fixed sortable prop="rdid" label="日期" width="110" align="left">
         <span slot-scope="scope">
           <el-tag effect="dark">{{ rdidFormat(scope.row.rdid) }}</el-tag>
@@ -153,7 +153,7 @@
       <div style="text-align:center">
         <!--需要弹出的内容部分-->
         <el-table :data="dialog.slice((dialogPageNum - 1) * dialogPageSize, dialogPageNum * dialogPageSize)"
-          :header-cell-style="rowClass" border style="width: 100%" highlight-current-row>
+          :header-cell-style="rowClass" border style="width: 100%" max-height="600" highlight-current-row>
           <el-table-column fixed prop="stockCode" label="股票代码" align="left">
           </el-table-column>
           <el-table-column prop="stockName" label="股票名称" align="left">

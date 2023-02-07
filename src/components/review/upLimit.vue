@@ -2,7 +2,7 @@
 <template>
   <div>
     <el-table :data="tableData.slice((pageNum - 1) * pageSize, pageNum * pageSize)" :header-cell-style="rowClass"
-    :default-sort="{ prop: 'day', order: 'descending' }" border style="width: 100%" highlight-current-row>
+    :default-sort="{ prop: 'day', order: 'descending' }" border style="width: 100%" max-height="800" highlight-current-row>
       <el-table-column fixed  prop="rdid" width="110" label="日期" align="left">
         <span slot-scope="scope">
           <el-tag effect="dark">{{ rdidFormat(scope.row.rdid) }}</el-tag>

@@ -1,7 +1,8 @@
 <!--上涨家数界面-->
 <template>
     <div>
-    <el-table :data="tableData" :header-cell-style="rowClass" :default-sort = "{prop: 'rdid', order: 'descending'}" border style="width: 100%" highlight-current-row>
+    <el-table :data="tableData" :header-cell-style="rowClass" :default-sort = "{prop: 'rdid', order: 'descending'}" 
+    border style="width: 100%" max-height="800" highlight-current-row>
       <el-table-column fixed sortable prop="rdid" width="110" label="日期" align="left">
         <span slot-scope="scope">
           <el-tag effect="dark">{{ rdidFormat(scope.row.rdid) }}</el-tag>

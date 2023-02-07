@@ -3,7 +3,7 @@
   <div class="page-content">
     <div style="margin-bottom: 5px;">
       <el-input v-model="topic" placeholder="请输入主题" suffix-icon="el-icon-search" style="width: 200px;"
-        @keyup.enter.native="loadPost"></el-input>
+        @keyup.enter.native="loadPost" max-height="800"></el-input>
       <el-button type="primary" style="margin-left: 5px;" @click="loadPost">查询</el-button>
       <el-button type="success" @click="topic = ''">重置</el-button>
     </div>
