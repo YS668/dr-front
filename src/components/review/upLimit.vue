@@ -13,7 +13,7 @@
         <span slot-scope="scope">
           <el-popover placement="right" width="400" trigger="hover" @show="setGifList(scope.row.stockCode)">
             <div class="block">
-              <el-carousel trigger="click" :loop=Boolean.false>
+              <el-carousel trigger="click" :interval="0">
                 <el-carousel-item v-for="item in gifList" :key="item">
                   <img style="height:100%;width:100%;" :src=item />
                 </el-carousel-item>
@@ -83,7 +83,7 @@ export default {
       pageSize: 999,
       pageNum: 1,
       total: 0,
-      gifList: []
+      gifList: [],
     }
   },
   methods: {
