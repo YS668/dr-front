@@ -9,8 +9,6 @@
           <el-tag effect="dark">{{ rdidFormat(scope.row.rdid) }}</el-tag>
         </span>
       </el-table-column>
-      <el-table-column prop="stockName" label="股票名称"  align="left">
-      </el-table-column>
       <el-table-column prop="stockCode" label="股票代码" width="130" align="left">
         <span slot-scope="scope">
           <el-popover placement="right" width="400" trigger="hover" @show="setGifList(scope.row.stockCode)">
@@ -26,6 +24,8 @@
             }}</el-button>
           </el-popover>
         </span>
+      </el-table-column>
+      <el-table-column prop="stockName" label="股票名称"  align="left">
       </el-table-column>
       <el-table-column prop="trend" label="涨跌" align="left">
       </el-table-column>

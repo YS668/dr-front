@@ -156,9 +156,7 @@
         <!--需要弹出的内容部分-->
         <el-table :data="dialog.slice((dialogPageNum - 1) * dialogPageSize, dialogPageNum * dialogPageSize)"
           :header-cell-style="rowClass" border style="width: 100%" max-height="600" highlight-current-row>
-          <el-table-column fixed prop="stockName" label="股票名称" align="left">
-          </el-table-column>
-          <el-table-column prop="stockCode" label="股票代码" align="left">
+          <el-table-column fixed prop="stockCode" label="股票代码" align="left">
             <span slot-scope="scope">
               <el-popover placement="right" width="400" trigger="hover" @show="setGifList(scope.row.stockCode)">
                 <div class="block">
@@ -168,11 +166,13 @@
                     </el-carousel-item>
                   </el-carousel>
                 </div>
-                <el-button slot="reference" >{{
+                <el-button slot="reference">{{
                   scope.row.stockCode
                 }}</el-button>
               </el-popover>
             </span>
+          </el-table-column>
+          <el-table-column  prop="stockName" label="股票名称" align="left">
           </el-table-column>
           <el-table-column prop="nowPrice" label="现价" align="left">
           </el-table-column>
