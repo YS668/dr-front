@@ -8,8 +8,6 @@ axios.defaults.baseURL = "http://www.yifuday.top/api"
 
 // 前置拦截
 axios.interceptors.request.use(config => {
-    
-    console.log("11")
     return config;
 }, function (error) {
     console.log('error!!!');

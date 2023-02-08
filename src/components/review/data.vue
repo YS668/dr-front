@@ -15,7 +15,7 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope" :class="(scope.row.historyHigh.length > 10) ? 'red':'' ">
+        <span slot-scope="scope" :class="(scope.row.historyHigh.length > 10) ? 'red' : ''">
           <a @click="getDetail(scope.row.historyHigh)" style="text-decoration:underline;">{{
             scope.row.historyHigh.length
           }}</a>
@@ -28,10 +28,11 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope" >
-          <a @click="getDetail(scope.row.yearHigh)" :class="(scope.row.yearHigh.length > 70) ? 'red':'' " style="text-decoration:underline;">{{
-            scope.row.yearHigh.length
-          }}</a>
+        <span slot-scope="scope">
+          <a @click="getDetail(scope.row.yearHigh)" :class="(scope.row.yearHigh.length > 70) ? 'red' : ''"
+            style="text-decoration:underline;">{{
+              scope.row.yearHigh.length
+            }}</a>
         </span>
       </el-table-column>
       <el-table-column prop="yearLow.length" label="一年新低" align="left">
@@ -52,7 +53,7 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope" :class="(scope.row.downLimit.length > 5) ? 'red':'' ">
+        <span slot-scope="scope" :class="(scope.row.downLimit.length > 5) ? 'red' : ''">
           <a @click="getDetail(scope.row.downLimit)" style="text-decoration:underline;">{{
             scope.row.downLimit.length
           }}</a>
@@ -78,7 +79,7 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope" :class="(scope.row.upLimit.length > 80) ? 'red':'' ">
+        <span slot-scope="scope" :class="(scope.row.upLimit.length > 80) ? 'red' : ''">
           <a @click="getDetail(scope.row.upLimit)" style="text-decoration:underline;">{{ scope.row.upLimit.length }}</a>
         </span>
       </el-table-column>
@@ -89,7 +90,7 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope" :class="(scope.row.noOneUp.length > 70) ? 'red':'' ">
+        <span slot-scope="scope" :class="(scope.row.noOneUp.length > 70) ? 'red' : ''">
           <a @click="getDetail(scope.row.noOneUp)" style="text-decoration:underline;">{{ scope.row.noOneUp.length }}</a>
         </span>
       </el-table-column>
@@ -100,7 +101,7 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope" :class="(scope.row.upFive.length > 300) ? 'red':'' ">
+        <span slot-scope="scope" :class="(scope.row.upFive.length > 300) ? 'red' : ''">
           <a @click="getDetail(scope.row.upFive)" style="text-decoration:underline;">{{ scope.row.upFive.length }}</a>
         </span>
       </el-table-column>
@@ -111,7 +112,7 @@
             <i class="el-icon-question" style="margin-left: 5px"></i>
           </el-tooltip>
         </template>
-        <span slot-scope="scope" :class="(scope.row.upAll > 3000) ? 'red':'' ">
+        <span slot-scope="scope" :class="(scope.row.upAll > 3000) ? 'red' : ''">
           {{ scope.row.upAll }}
         </span>
       </el-table-column>
@@ -119,7 +120,7 @@
         <template slot-scope="{}" slot="header">
           <a href="http://q.10jqka.com.cn/zs/detail/code/1A0001/" target="_blank">上证指数</a>
         </template>
-        <span slot-scope="scope" :class="(scope.row.sh_INDEX.slice(0,1) =='-') ? 'green':'red' ">
+        <span slot-scope="scope" :class="(scope.row.sh_INDEX.slice(0, 1) == '-') ? 'green' : 'red'">
           {{ scope.row.sh_INDEX }}
         </span>
       </el-table-column>
@@ -127,26 +128,27 @@
         <template slot-scope="{}" slot="header">
           <a href="http://q.10jqka.com.cn/zs/detail/code/399001/" target="_blank">深证成指</a>
         </template>
-        <span slot-scope="scope" :class="(scope.row.sz_INDEX.slice(0,1) =='-') ? 'green':'red' ">
-         {{ scope.row.sz_INDEX }}
+        <span slot-scope="scope" :class="(scope.row.sz_INDEX.slice(0, 1) == '-') ? 'green' : 'red'">
+          {{ scope.row.sz_INDEX }}
         </span>
       </el-table-column>
       <el-table-column prop="business_INDEX" label="创业板指" align="center">
         <template slot-scope="{}" slot="header">
           <a href="http://q.10jqka.com.cn/zs/detail/code/399006/" target="_blank">创业板指</a>
         </template>
-        <span slot-scope="scope" :class="(scope.row.business_INDEX.slice(0,1) =='-') ? 'green':'red' ">
+        <span slot-scope="scope" :class="(scope.row.business_INDEX.slice(0, 1) == '-') ? 'green' : 'red'">
           {{ scope.row.business_INDEX }}
         </span>
       </el-table-column>
       <el-table-column prop="turnOver" label="成交额" align="center">
-        <span slot-scope="scope" :class="(scope.row.turnOver.slice(0,1) =='9' || scope.row.turnOver.slice(0,1) =='1') ? 'red':'' ">
+        <span slot-scope="scope"
+          :class="(scope.row.turnOver.slice(0, 1) == '9' || scope.row.turnOver.slice(0, 1) == '1') ? 'red' : ''">
           {{ scope.row.turnOver }}
         </span>
       </el-table-column>
     </el-table>
     <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
-      :page-sizes="[10,30,50,100]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+      :page-sizes="[10, 30, 50, 100]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
     <el-dialog :visible.sync="detailVisible" width="80%" center title="详情">
@@ -154,20 +156,34 @@
         <!--需要弹出的内容部分-->
         <el-table :data="dialog.slice((dialogPageNum - 1) * dialogPageSize, dialogPageNum * dialogPageSize)"
           :header-cell-style="rowClass" border style="width: 100%" max-height="600" highlight-current-row>
-          <el-table-column fixed prop="stockCode" label="股票代码" align="left">
+          <el-table-column fixed prop="stockName" label="股票名称" align="left">
           </el-table-column>
-          <el-table-column prop="stockName" label="股票名称" align="left">
+          <el-table-column prop="stockCode" label="股票代码" align="left">
+            <span slot-scope="scope">
+              <el-popover placement="right" width="400" trigger="hover" @show="setGifList(scope.row.stockCode)">
+                <div class="block">
+                  <el-carousel trigger="click" :loop=Boolean.false>
+                    <el-carousel-item v-for="item in gifList" :key="item">
+                      <img style="height:100%;width:100%;" :src=item />
+                    </el-carousel-item>
+                  </el-carousel>
+                </div>
+                <el-button slot="reference" >{{
+                  scope.row.stockCode
+                }}</el-button>
+              </el-popover>
+            </span>
           </el-table-column>
-          <el-table-column prop="nowPrice"  label="现价" align="left">
+          <el-table-column prop="nowPrice" label="现价" align="left">
           </el-table-column>
-          <el-table-column prop="trend"  label="涨幅" align="left">
-            <span slot-scope="scope" :class="(scope.row.trend.slice(0,1) =='-') ? 'green':'red' ">
-          {{ scope.row.trend }}
-        </span>
+          <el-table-column prop="trend" label="涨幅" align="left">
+            <span slot-scope="scope" :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
+              {{ scope.row.trend }}
+            </span>
           </el-table-column>
-          <el-table-column prop="turnover"  label="成交额" align="left">
+          <el-table-column prop="turnover" label="成交额" align="left">
           </el-table-column>
-          <el-table-column  label="链接" align="left">
+          <el-table-column label="链接" align="left">
             <span slot-scope="scope">
               <a :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">雪球</a>
               <a :href=scope.row.taoGuLink target="_blank" style="margin-left: 6px">淘股吧</a>
@@ -177,7 +193,7 @@
           </el-table-column>
         </el-table>
         <el-pagination @size-change="dialogSizeChange" @current-change="dialogCurrentChange"
-          :current-page="dialogPageNum" :page-sizes="[10,30,50,100]" :page-size="dialogPageSize"
+          :current-page="dialogPageNum" :page-sizes="[10, 30, 50, 100]" :page-size="dialogPageSize"
           layout="total, sizes, prev, pager, next, jumper" :total=dialogTotal>
         </el-pagination>
       </div>
@@ -198,7 +214,8 @@ export default {
       pageSize: 10,
       pageNum: 1,
       total: 0,
-      detailVisible: false
+      detailVisible: false,
+      gifList: []
     }
   },
   methods: {
@@ -253,11 +270,21 @@ export default {
       console.log(rowIndex) //表头行标号为0
       return 'background: gainsboro'
     },
+    //弹出框
     getDetail(val) {
       console.log(val);
       this.dialog = val
       this.detailVisible = true
       this.dialogTotal = this.dialog.length
+    },
+    //K线图
+    setGifList(val) {
+      //先清空数组
+      this.gifList.length = 0
+      this.gifList.push("http://image.sinajs.cn/newchart/min/n/" + val.slice(0, 2).toLowerCase() + val.slice(2) + ".gif")
+      this.gifList.push("http://image.sinajs.cn/newchart/daily/n/" + val.slice(0, 2).toLowerCase() + val.slice(2) + ".gif")
+      this.gifList.push("http://image.sinajs.cn/newchart/weekly/n/" + val.slice(0, 2).toLowerCase() + val.slice(2) + ".gif")
+      this.gifList.push("http://image.sinajs.cn/newchart/monthly/n/" + val.slice(0, 2).toLowerCase() + val.slice(2) + ".gif")
     },
   },
   beforeMount() {
@@ -270,10 +297,14 @@ export default {
 
 <style lang="less" scoped>
 .red {
- color: red;
-}
-.green {
- color: green;
+  color: red;
 }
 
+.green {
+  color: green;
+}
+
+.el-carousel__item {
+  width: 100%;
+}
 </style>

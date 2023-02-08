@@ -1,6 +1,6 @@
 <template>
     <div>
-        
+        <img src="http://image.sinajs.cn/newchart/daily/n/sh600586.gif"/>
     </div>
 </template>
 
@@ -15,7 +15,6 @@ export default {
         }
     },
     created() {
-
     },
 
     components: {
