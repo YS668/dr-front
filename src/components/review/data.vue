@@ -118,7 +118,7 @@
       </el-table-column>
       <el-table-column prop="sh_INDEX" label="上证指数" align="left">
         <template slot-scope="{}" slot="header">
-          <a href="http://q.10jqka.com.cn/zs/detail/code/1A0001/" target="_blank">上证指数</a>
+          <a href="https://xueqiu.com/S/SH000001" target="_blank">上证指数</a>
         </template>
         <span slot-scope="scope" :class="(scope.row.sh_INDEX.slice(0, 1) == '-') ? 'green' : 'red'">
           {{ scope.row.sh_INDEX }}
@@ -126,7 +126,7 @@
       </el-table-column>
       <el-table-column prop="sz_INDEX" label="深证成指" align="center">
         <template slot-scope="{}" slot="header">
-          <a href="http://q.10jqka.com.cn/zs/detail/code/399001/" target="_blank">深证成指</a>
+          <a href="https://xueqiu.com/S/SZ399001" target="_blank">深证成指</a>
         </template>
         <span slot-scope="scope" :class="(scope.row.sz_INDEX.slice(0, 1) == '-') ? 'green' : 'red'">
           {{ scope.row.sz_INDEX }}
@@ -134,7 +134,7 @@
       </el-table-column>
       <el-table-column prop="business_INDEX" label="创业板指" align="center">
         <template slot-scope="{}" slot="header">
-          <a href="http://q.10jqka.com.cn/zs/detail/code/399006/" target="_blank">创业板指</a>
+          <a href="https://xueqiu.com/S/SZ399006" target="_blank">创业板指</a>
         </template>
         <span slot-scope="scope" :class="(scope.row.business_INDEX.slice(0, 1) == '-') ? 'green' : 'red'">
           {{ scope.row.business_INDEX }}
