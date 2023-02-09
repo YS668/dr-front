@@ -189,10 +189,10 @@
                     </el-row>
                     <el-row>
                         <el-col :span="12">
-                            <span><b>沪市</b></span>
+                            <span><b>前10名</b></span>
                         </el-col>
                         <el-col :span="12">
-                            <span><b>深市</b></span>
+                            <span><b>11-20名</b></span>
                         </el-col>
                     </el-row>
                     <el-row>
