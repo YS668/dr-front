@@ -63,6 +63,14 @@ const routes = [
                 component:()=>import('../components/review/hot')
             },
             {
+                path:'/Crawing',
+                name:'crawing',
+                meta:{
+                    title:'易复天天-拥挤度'
+                },
+                component:()=>import('../components/review/crawing')
+            },
+            {
                 path:'/ReviewPlan',
                 name:'reviewPlan',
                 meta:{

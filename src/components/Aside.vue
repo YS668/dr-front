@@ -48,6 +48,12 @@
                     <i class="el-icon-question" style="margin-left: 5px"></i>
                  </el-tooltip>
             </el-menu-item>
+            <el-menu-item index="/Crawing">
+                <span>拥挤度</span>
+                <el-tooltip class="item" effect="dark" content="15点10分更新(数据来源于同花顺)" placement="right">
+                    <i class="el-icon-question" style="margin-left: 5px"></i>
+                 </el-tooltip>
+            </el-menu-item>
         </el-submenu>
         <el-submenu index="2">
             <template slot="title" :collapse="isCollapse" >
