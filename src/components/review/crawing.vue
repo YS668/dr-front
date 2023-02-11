@@ -4,13 +4,14 @@
             <el-col :span="8">
                 <div style="text-align: center;">
                     <el-row>
-                        <el-col >
+                        <el-col>
                             <h2>主要指数</h2>
                         </el-col>
                     </el-row>
                     <el-row>
                         <el-col :span="12">
-                            <span><a href="https://news.10jqka.com.cn/realtimenews.html" target="_blank">7*24咨询</a></span>
+                            <span><a href="https://news.10jqka.com.cn/realtimenews.html"
+                                    target="_blank">7*24咨询</a></span>
                         </el-col>
                         <el-col :span="12">
                             <span><a href="http://data.10jqka.com.cn/market/longhu/" target="_blank">同花顺龙虎榜</a></span>
@@ -19,22 +20,30 @@
                     <el-row>
                         <el-col :span="24">
                             <el-card class="box-card">
-                                <el-table :data="xq_one" border style="width: 100%">
-                                    <el-table-column prop="stockName" label="名称" >
+                                <el-table :data="index" border style="width: 100%">
+                                    <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.xueQiuLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</a>
+                                            <a :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">{{
+                                                scope.row.stockName
+                                            }}</a>
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="trend" label="涨幅" >
-                                    </el-table-column>
-                                    <el-table-column prop="nowPrice" label="成交额" >
-                                    </el-table-column>
-                                    <el-table-column prop="trend" label="占比" >
+                                    <el-table-column prop="trend" label="涨幅">
                                         <span slot-scope="scope"
                                             :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
                                             {{ scope.row.trend }}
                                         </span>
+                                    </el-table-column>
+                                    <el-table-column prop="turnover" label="成交额">
+                                    </el-table-column>
+                                    <el-table-column prop="percentage" label="占比">
+                                        <template slot-scope="{}" slot="header">
+                                            <span>占比</span>
+                                            <el-tooltip class="item" effect="dark" content="占市场总成交的比重"
+                                                placement="right">
+                                                <i class="el-icon-question" style="margin-left: 5px"></i>
+                                            </el-tooltip>
+                                        </template>
                                     </el-table-column>
                                 </el-table>
                             </el-card>
@@ -61,21 +70,29 @@
                         <el-col :span="12">
                             <el-card class="box-card">
                                 <el-table :data="th_one" border style="width: 100%">
-                                    <el-table-column prop="stockName" label="名称" >
+                                    <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.tongHLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</a>
+                                            <a :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">{{
+                                                scope.row.stockName
+                                            }}</a>
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="trend" label="涨幅" >
-                                    </el-table-column>
-                                    <el-table-column prop="nowPrice" label="成交额" >
-                                    </el-table-column>
-                                    <el-table-column prop="trend" label="占比" >
+                                    <el-table-column prop="trend" label="涨幅">
                                         <span slot-scope="scope"
                                             :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
                                             {{ scope.row.trend }}
                                         </span>
+                                    </el-table-column>
+                                    <el-table-column prop="turnover" label="成交额">
+                                    </el-table-column>
+                                    <el-table-column prop="percentage" label="占比">
+                                        <template slot-scope="{}" slot="header">
+                                            <span>占比</span>
+                                            <el-tooltip class="item" effect="dark" content="占市场总成交的比重"
+                                                placement="right">
+                                                <i class="el-icon-question" style="margin-left: 5px"></i>
+                                            </el-tooltip>
+                                        </template>
                                     </el-table-column>
                                 </el-table>
                             </el-card>
@@ -83,21 +100,29 @@
                         <el-col :span="12">
                             <el-card class="box-card">
                                 <el-table :data="th_tf" border style="width: 100%">
-                                    <el-table-column prop="stockName" label="名称" >
+                                    <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.tongHLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</a>
+                                            <a :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">{{
+                                                scope.row.stockName
+                                            }}</a>
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="trend" label="涨幅" >
-                                    </el-table-column>
-                                    <el-table-column prop="nowPrice" label="成交额" >
-                                    </el-table-column>
-                                    <el-table-column prop="trend" label="占比" >
+                                    <el-table-column prop="trend" label="涨幅">
                                         <span slot-scope="scope"
                                             :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
                                             {{ scope.row.trend }}
                                         </span>
+                                    </el-table-column>
+                                    <el-table-column prop="turnover" label="成交额">
+                                    </el-table-column>
+                                    <el-table-column prop="percentage" label="占比">
+                                        <template slot-scope="{}" slot="header">
+                                            <span>占比</span>
+                                            <el-tooltip class="item" effect="dark" content="占市场总成交的比重"
+                                                placement="right">
+                                                <i class="el-icon-question" style="margin-left: 5px"></i>
+                                            </el-tooltip>
+                                        </template>
                                     </el-table-column>
                                 </el-table>
                             </el-card>
@@ -116,10 +141,30 @@ export default {
     name: "Crawing",
     data() {
         return {
-            
+            index: []
+        }
+    },
+    methods: {
+        getIndex() {
+            this.$axios.get('/index/percentage').then(res => {
+                if (res.code == 200) {
+                    this.$message({
+                        message: '刷新热股榜成功！',
+                        type: 'success'
+                    });
+                    console.log(res)
+                    this.index = res.data
+                } else {
+                    this.$message({
+                        message: '刷新热股榜失败！',
+                        type: 'error'
+                    });
+                }
+            })
         }
     },
     created() {
+        this.getIndex()
     },
 
     components: {
@@ -129,5 +174,16 @@ export default {
 </script>
 
 <style>
+.el-row-inline {
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
 </style>
