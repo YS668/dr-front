@@ -55,7 +55,7 @@
                 <div style="text-align: center;">
                     <el-row>
                         <el-col>
-                            <h2>成交额前10</h2>
+                            <h2>成交额前20</h2>
                         </el-col>
                     </el-row>
                     <el-row>
@@ -70,13 +70,15 @@
                     <el-row>
                         <el-col :span="24">
                             <el-card class="box-card">
-                                <el-table :data="index" border style="width: 100%">
+                                <el-table :data="turnoverSort" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">{{
+                                            <a :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
                                                 scope.row.stockName
                                             }}</a>
                                         </span>
+                                    </el-table-column>
+                                    <el-table-column prop="turnover" label="成交额">
                                     </el-table-column>
                                     <el-table-column prop="trend" label="涨幅">
                                         <span slot-scope="scope"
@@ -85,8 +87,6 @@
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="nowPrice" label="现价">
-                                    </el-table-column>
-                                    <el-table-column prop="turnover" label="成交额">
                                     </el-table-column>
                                 </el-table>
                             </el-card>
@@ -184,7 +184,8 @@ export default {
     name: "Crawing",
     data() {
         return {
-            index: []
+            index: [],
+            turnoverSort: [],
         }
     },
     methods: {
@@ -192,14 +193,31 @@ export default {
             this.$axios.get('/index/percentage').then(res => {
                 if (res.code == 200) {
                     this.$message({
-                        message: '刷新热股榜成功！',
+                        message: '刷新主要指数成功！',
                         type: 'success'
                     });
                     console.log(res)
                     this.index = res.data
                 } else {
                     this.$message({
-                        message: '刷新热股榜失败！',
+                        message: '刷新主要指数失败！',
+                        type: 'error'
+                    });
+                }
+            })
+        },
+        getTurnOverSort() {
+            this.$axios.get('/turnover/sort').then(res => {
+                if (res.code == 200) {
+                    this.$message({
+                        message: '刷新成交额成功！',
+                        type: 'success'
+                    });
+                    console.log(res)
+                    this.turnoverSort = res.data
+                } else {
+                    this.$message({
+                        message: '刷新成交额失败！',
                         type: 'error'
                     });
                 }
@@ -208,6 +226,7 @@ export default {
     },
     created() {
         this.getIndex()
+        this.getTurnOverSort()
     },
 
     components: {

@@ -87,6 +87,14 @@ const routes = [
                 component:()=>import('../components/plan/write')
             },
             {
+                path:'/MyChoose',
+                name:'MyChoose',
+                meta:{
+                    title:'易复天天-我的自选'
+                },
+                component:()=>import('../components/plan/myChoose')
+            },
+            {
                 path:'/ReviewArticle',
                 name:'reviewArticle',
                 meta:{
