@@ -60,7 +60,7 @@
                     </el-row>
                     <el-row>
                         <el-col :span="12">
-                            <span><a href="https://www.iwencai.com/unifiedwap/result?w=今日成交额从高到低；"
+                            <span><a href="https://www.iwencai.com/unifiedwap/result?w=今日成交额从高到低前20名"
                                     target="_blank">问财链接</a></span>
                         </el-col>
                         <el-col :span="12">
@@ -112,10 +112,10 @@
                     <el-row>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="th_one" border style="width: 100%">
+                                <el-table :data="conceptSort" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">{{
+                                            <a :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
                                                 scope.row.stockName
                                             }}</a>
                                         </span>
@@ -142,10 +142,10 @@
                         </el-col>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="th_tf" border style="width: 100%">
+                                <el-table :data="industrySort" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">{{
+                                            <a :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
                                                 scope.row.stockName
                                             }}</a>
                                         </span>
@@ -181,11 +181,13 @@
 
 
 export default {
-    name: "Crawing",
+    name: "Congestion",
     data() {
         return {
             index: [],
             turnoverSort: [],
+            industrySort:[],
+            conceptSort:[]
         }
     },
     methods: {
@@ -222,11 +224,47 @@ export default {
                     });
                 }
             })
+        },
+        getIndustrySort(){
+            this.$axios.get('/industry/sort').then(res => {
+                if (res.code == 200) {
+                    this.$message({
+                        message: '刷新行业板块成功！',
+                        type: 'success'
+                    });
+                    console.log(res)
+                    this.industrySort = res.data
+                } else {
+                    this.$message({
+                        message: '刷新行业板块失败！',
+                        type: 'error'
+                    });
+                }
+            })
+        },
+        getConceptSort(){
+            this.$axios.get('/concept/sort').then(res => {
+                if (res.code == 200) {
+                    this.$message({
+                        message: '刷新概念板块成功！',
+                        type: 'success'
+                    });
+                    console.log(res)
+                    this.conceptSort = res.data
+                } else {
+                    this.$message({
+                        message: '刷新概念板块失败！',
+                        type: 'error'
+                    });
+                }
+            })
         }
     },
     created() {
         this.getIndex()
         this.getTurnOverSort()
+        this.getIndustrySort()
+        this.getConceptSort()
     },
 
     components: {

@@ -48,7 +48,7 @@
                     <i class="el-icon-question" style="margin-left: 5px"></i>
                  </el-tooltip>
             </el-menu-item>
-            <el-menu-item index="/Crawing">
+            <el-menu-item index="/Congestion">
                 <span>拥挤度</span>
                 <el-tooltip class="item" effect="dark" content="15点10分更新(数据来源于同花顺)" placement="right">
                     <i class="el-icon-question" style="margin-left: 5px"></i>
@@ -80,6 +80,10 @@
         <el-menu-item index="/Recomm">
             <i class="el-icon-position"></i>
             <span slot="title">建议</span>
+        </el-menu-item>
+        <el-menu-item index="/Money">
+            <i class="el-icon-sugar"></i>
+            <span slot="title">打赏赞助</span>
         </el-menu-item>
         <el-menu-item >
             <i class="el-icon-orange"></i>

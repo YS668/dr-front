@@ -63,12 +63,12 @@ const routes = [
                 component:()=>import('../components/review/hot')
             },
             {
-                path:'/Crawing',
-                name:'crawing',
+                path:'/Congestion',
+                name:'congestion',
                 meta:{
                     title:'易复天天-拥挤度'
                 },
-                component:()=>import('../components/review/crawing')
+                component:()=>import('../components/review/congestion')
             },
             {
                 path:'/ReviewPlan',
@@ -125,6 +125,14 @@ const routes = [
                     title:'易复天天-建议与反馈'
                 },
                 component:()=>import('../components/recomm/recomm')
+            },
+            {
+                path:'/Money',
+                name:'money',
+                meta:{
+                    title:'易复天天-打赏赞助'
+                },
+                component:()=>import('../components/money/money')
             },
             
         ]
