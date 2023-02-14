@@ -63,7 +63,12 @@
             <!--index标签为页面-->
             <el-menu-item index="/ReviewPlan">我的复盘</el-menu-item>
             <el-menu-item index="/Write">写复盘</el-menu-item>
-            <el-menu-item index="/MyChoose">我的自选</el-menu-item>
+            <el-menu-item index="/MyChoose">
+                <span>我的自选</span>
+                <el-tooltip class="item" effect="dark" content="30秒更新一次" placement="right">
+                    <i class="el-icon-question" style="margin-left: 5px"></i>
+                 </el-tooltip>
+            </el-menu-item>
         </el-submenu>
         <el-menu-item index="/ReviewArticle">
             <i class="el-icon-document-copy"></i>

@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import TinymceEditor from '../../components/Editor/Index'
+import TinymceEditor from '../../components/utils/editor'
 import DateUtils from "../utils/DateUtils";
 
 export default {
