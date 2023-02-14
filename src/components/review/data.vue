@@ -296,13 +296,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.red {
-  color: red;
-}
-
-.green {
-  color: green;
-}
 
 .el-carousel__item {
   width: 100%;

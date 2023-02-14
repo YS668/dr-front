@@ -23,4 +23,14 @@ export default {
   margin-top: 60px;
   height: 100%;
 }
+a:visited {
+    color: rgb(101, 122, 190); /*已访问的链接颜色*/
+}
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
 </style>

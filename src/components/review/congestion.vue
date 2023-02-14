@@ -98,7 +98,7 @@
                 <div style="text-align: center;">
                     <el-row>
                         <el-col :span="24">
-                            <h2>板块</h2>
+                            <h2>板块前20</h2>
                         </el-col>
                     </el-row>
                     <el-row>
@@ -279,11 +279,5 @@ export default {
     flex-wrap: wrap;
 }
 
-.red {
-    color: red;
-}
 
-.green {
-    color: green;
-}
 </style>

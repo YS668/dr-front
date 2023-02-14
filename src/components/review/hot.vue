@@ -331,11 +331,5 @@ export default {
     flex-wrap: wrap;
 }
 
-.red {
-    color: red;
-}
 
-.green {
-    color: green;
-}
 </style>

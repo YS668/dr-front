@@ -120,10 +120,5 @@
   </script>
   
   <style lang="less" scoped>
-  .red {
- color: red;
-}
-.green {
- color: green;
-}
+
   </style>
