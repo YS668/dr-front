@@ -5,8 +5,8 @@
                 <h1 class="login-title">用户登录</h1>
                 <el-form :model="loginForm" label-width="100px"
                          :rules="rules" ref="loginForm">
-                    <el-form-item label="账号" prop="no">
-                        <el-input style="width: 200px" type="text" v-model="loginForm.no"
+                    <el-form-item label="用户名" prop="username">
+                        <el-input style="width: 200px" type="text" v-model="loginForm.username"
                                   autocomplete="off" size="small"></el-input>
                     </el-form-item>
                     <el-form-item label="密码" prop="password">
@@ -30,12 +30,12 @@
             return{
                 confirm_disabled:false,
                 loginForm:{
-                    no:'',
+                    username:'',
                     password:''
                 },
                 rules:{
-                    no: [
-                        { required: true, message: '请输入账号', trigger: 'blur' }
+                    username: [
+                        { required: true, message: '请输入用户名', trigger: 'blur' }
                     ],
                     password: [
                         { required: true, message: '请输密码', trigger: 'blur' }
@@ -53,7 +53,7 @@
                         this.$axios.post('/user/login',this.loginForm).then(res=>{
                             if(res.code==200){
                                 //存储
-                                //sessionStorage.setItem("CurUser",JSON.stringify(res.data.user))
+                                sessionStorage.setItem("CurUser",JSON.stringify(res.data))
 
                                 //跳转到主页
                                 this.$router.replace('/Index');

@@ -44,7 +44,8 @@
         </span>
       </el-table-column>
     </el-table>
-    <el-pagination 
+    <nav style="text-align: center"> <!-- 分页居中放置-->
+      <el-pagination 
       @size-change="handleSizeChange" 
       @current-change="handleCurrentChange" 
       :current-page="pageNum"
@@ -53,6 +54,8 @@
       layout="total, sizes, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
+      </nav>
+    
   </div>
   </template>
   

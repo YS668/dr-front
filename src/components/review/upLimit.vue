@@ -25,7 +25,7 @@
           </el-popover>
         </span>
       </el-table-column>
-      <el-table-column prop="stockName" label="股票名称"  align="left">
+      <el-table-column prop="stockName" label="股票名称" align="left">
       </el-table-column>
       <el-table-column prop="trend" label="涨跌" align="left">
       </el-table-column>
@@ -67,10 +67,12 @@
       </el-table-column>
 
     </el-table>
-    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
-      :page-sizes="[999, 100, 50, 30]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
-      :total="total">
-    </el-pagination>
+    <nav style="text-align: center"> <!-- 分页居中放置-->
+      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
+        :page-sizes="[999, 100, 50, 30]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+        :total="total">
+      </el-pagination>
+    </nav>
   </div>
 </template>
 

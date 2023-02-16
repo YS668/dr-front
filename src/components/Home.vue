@@ -1,6 +1,6 @@
 <template>
   <div style="text-align: center;background-color: #f1f1f3;height: 100%;padding: 0px;margin: 0px;">
-      <h1 style="font-size: 50px;">{{'欢迎你！'+user.name}}</h1>
+      <h1 style="font-size: 50px;">{{'欢迎你！'+user.username}}</h1>
       <el-descriptions  title="个人中心" :column="2" size="40" border>
           <el-descriptions-item>
               <template slot="label" >
@@ -64,12 +64,12 @@
       },
       methods:{
           init(){
-            //this.user = JSON.parse(sessionStorage.getItem('CurUser'))
+            this.user = JSON.parse(sessionStorage.getItem('CurUser'))
           }
       },
       created(){
         console.log(11)
-          this.word = this.init()
+          this.init()
       }
   }
   //爬取语录

@@ -147,10 +147,13 @@
         </span>
       </el-table-column>
     </el-table>
-    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
-      :page-sizes="[10, 30, 50, 100]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
-      :total="total">
-    </el-pagination>
+    <nav style="text-align: center"> <!-- 分页居中放置-->
+      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
+        :page-sizes="[10, 30, 50, 100]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+        :total="total">
+      </el-pagination>
+    </nav>
+
     <el-dialog :visible.sync="detailVisible" width="80%" center title="详情">
       <div style="text-align:center">
         <!--需要弹出的内容部分-->
@@ -172,7 +175,7 @@
               </el-popover>
             </span>
           </el-table-column>
-          <el-table-column  prop="stockName" label="股票名称" align="left">
+          <el-table-column prop="stockName" label="股票名称" align="left">
           </el-table-column>
           <el-table-column prop="nowPrice" label="现价" align="left">
           </el-table-column>
@@ -192,10 +195,13 @@
             </span>
           </el-table-column>
         </el-table>
-        <el-pagination @size-change="dialogSizeChange" @current-change="dialogCurrentChange"
-          :current-page="dialogPageNum" :page-sizes="[10, 30, 50, 100]" :page-size="dialogPageSize"
-          layout="total, sizes, prev, pager, next, jumper" :total=dialogTotal>
-        </el-pagination>
+        <nav style="text-align: center"> <!-- 分页居中放置-->
+          <el-pagination @size-change="dialogSizeChange" @current-change="dialogCurrentChange"
+            :current-page="dialogPageNum" :page-sizes="[10, 30, 50, 100]" :page-size="dialogPageSize"
+            layout="total, sizes, prev, pager, next, jumper" :total=dialogTotal>
+          </el-pagination>
+        </nav>
+
       </div>
     </el-dialog>
   </div>
@@ -296,7 +302,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
 .el-carousel__item {
   width: 100%;
 }

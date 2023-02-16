@@ -18,27 +18,31 @@
       </el-table-column>
       <!--日周月年-->>
       <el-table-column prop="type" label="类型" align="left">
-        <span slot-scope="scope" >
-          {{ getType(scope.row.type)  }}
+        <span slot-scope="scope">
+          {{ getType(scope.row.type) }}
         </span>
       </el-table-column>
       <el-table-column prop="flag" label="复盘模式" align="left">
-        <span slot-scope="scope" >
+        <span slot-scope="scope">
           {{ getFlag(scope.row.flag) }}
         </span>
       </el-table-column>
       <el-table-column prop="operate" label="操作">
         <template slot-scope="scope">
-          <el-button size="small" type="success" @click="getContent(scope.row.content,scope.row.type,scope.row.rdid)">查看</el-button>
+          <el-button size="small" type="success"
+            @click="getContent(scope.row.content, scope.row.type, scope.row.rdid)">查看</el-button>
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
-      :page-sizes="[10, 20, 30]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
-      :total="total">
-    </el-pagination>
+    <nav style="text-align: center"> <!-- 分页居中放置-->
+      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
+        :page-sizes="[10, 20, 30]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+        :total="total">
+      </el-pagination>
+    </nav>
+
     <el-dialog :visible.sync="dialogVisible" width="50%" center :title="tit">
-      <div   v-html="strHtml" class="ql-editor">
+      <div v-html="strHtml" class="ql-editor">
       </div>
     </el-dialog>
   </div>
@@ -52,7 +56,7 @@ export default {
   data() {
     return {
       dialogVisible: false,
-      strHtml:'',
+      strHtml: '',
       tableData: [],
       topic: '',
       pageSize: 10,
@@ -105,32 +109,32 @@ export default {
       return 'background: gainsboro'
     },
     //查看复盘内容
-    getContent(val,type,rdid){
+    getContent(val, type, rdid) {
       this.strHtml = val
       this.dialogVisible = true
-      this.tit = rdid+this.getType(type)
+      this.tit = rdid + this.getType(type)
     },
     //复盘类型
-    getType(val){
-      if(val == 1){
+    getType(val) {
+      if (val == 1) {
         return "日复盘"
       }
-      if(val == 2){
+      if (val == 2) {
         return "周复盘"
       }
-      if(val == 3){
+      if (val == 3) {
         return "月总结"
       }
-      if(val == 4){
+      if (val == 4) {
         return "年总结"
       }
     },
     //复盘模式
-    getFlag(val){
-      if(val == 1){
+    getFlag(val) {
+      if (val == 1) {
         return "固定格式"
       }
-      if(val == 2){
+      if (val == 2) {
         return "全文"
       }
     }
@@ -139,7 +143,7 @@ export default {
     this.loadPost();
   },
   components: {
-    
+
   }
 }
 </script>

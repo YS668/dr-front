@@ -103,16 +103,16 @@
                     </el-row>
                     <el-row>
                         <el-col :span="12">
-                            <span><b>概念板块</b></span>
+                            <span><a href="https://www.iwencai.com/unifiedwap/result?w=今日概念板块涨跌幅从大到小前&querytype=zhishu" target="_blank">概念板块</a></span>
                         </el-col>
                         <el-col :span="12">
-                            <span><b>行业板块</b></span>
+                            <span><a href="https://www.iwencai.com/unifiedwap/result?w=今日行业板块涨跌幅从大到小前&querytype=zhishu" target="_blank">行业板块</a></span>
                         </el-col>
                     </el-row>
                     <el-row>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="conceptSort" border style="width: 100%">
+                                <el-table :data="conceptSort" border style="width: 100%" max-height="800">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <a :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
@@ -126,7 +126,7 @@
                                             {{ scope.row.trend }}
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="turnover" label="成交额">
+                                    <el-table-column sortable prop="turnover" label="成交额">
                                     </el-table-column>
                                     <el-table-column prop="percentage" label="占比">
                                         <template slot-scope="{}" slot="header">
@@ -142,7 +142,7 @@
                         </el-col>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="industrySort" border style="width: 100%">
+                                <el-table :data="industrySort" border style="width: 100%" max-height="800">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <a :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
