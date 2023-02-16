@@ -1,9 +1,9 @@
 <!--复盘数据-->
 <template>
   <div>
-    <el-table :data="tableData" :header-cell-style="rowClass" :default-sort="{ prop: 'rdid', order: 'descending' }"
+    <el-table :data="tableData" :header-cell-style="rowClass" 
       border style="width: 100%" max-height="800" highlight-current-row>
-      <el-table-column fixed sortable prop="rdid" label="日期" width="110" align="left">
+      <el-table-column fixed  prop="rdid" label="日期" width="110" align="left">
         <span slot-scope="scope">
           <el-tag effect="dark">{{ rdidFormat(scope.row.rdid) }}</el-tag>
         </span>
