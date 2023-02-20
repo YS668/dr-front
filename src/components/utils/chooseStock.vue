@@ -118,7 +118,7 @@ export default {
                     this.loadGroup()
                 } else {
                     this.$message({
-                        message: '操作失败！',
+                        message: res.msg,
                         type: 'error'
                     });
                 }
