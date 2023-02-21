@@ -80,7 +80,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: #B3C0D1;
+        background-image: url('https://dr-data.oss-cn-guangzhou.aliyuncs.com/back/lg.png')
     }
     .loginDiv {
         position: absolute;

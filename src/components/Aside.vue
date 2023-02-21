@@ -13,7 +13,7 @@
             <span slot="title">首页</span>
         </el-menu-item>
         <el-submenu index="1" >
-            <template slot="title" :collapse="isCollapse" >
+            <template slot="title" >
                 <i class="el-icon-discover"></i>
                 <span slot="title">复盘数据</span>
             </template>
@@ -56,7 +56,7 @@
             </el-menu-item>
         </el-submenu>
         <el-submenu index="2">
-            <template slot="title" :collapse="isCollapse" >
+            <template slot="title" >
                 <i class="el-icon-medal-1"></i>
                 <span slot="title">复盘计划</span>
             </template>
