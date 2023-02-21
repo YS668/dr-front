@@ -1,9 +1,9 @@
 <!--复盘数据-->
 <template>
   <div>
-    <el-table :data="tableData" :header-cell-style="rowClass" 
-      border style="width: 100%" max-height="800" highlight-current-row>
-      <el-table-column fixed  prop="rdid" label="日期" width="110" align="left">
+    <el-table :data="tableData" :header-cell-style="rowClass" border style="width: 100%" max-height="800"
+      highlight-current-row>
+      <el-table-column fixed prop="rdid" label="日期" width="110" align="left">
         <span slot-scope="scope">
           <el-tag effect="dark">{{ rdidFormat(scope.row.rdid) }}</el-tag>
         </span>
@@ -118,7 +118,7 @@
       </el-table-column>
       <el-table-column prop="sh_INDEX" label="上证指数" align="left">
         <template slot-scope="{}" slot="header">
-          <a href="https://xueqiu.com/S/SH000001" target="_blank">上证指数</a>
+          <el-link type="primary" href="https://xueqiu.com/S/SH000001" target="_blank">上证指数</el-link>
         </template>
         <span slot-scope="scope" :class="(scope.row.sh_INDEX.slice(0, 1) == '-') ? 'green' : 'red'">
           {{ scope.row.sh_INDEX }}
@@ -126,7 +126,7 @@
       </el-table-column>
       <el-table-column prop="sz_INDEX" label="深证成指" align="center">
         <template slot-scope="{}" slot="header">
-          <a href="https://xueqiu.com/S/SZ399001" target="_blank">深证成指</a>
+          <el-link type="primary" href="https://xueqiu.com/S/SZ399001" target="_blank">深证成指</el-link>
         </template>
         <span slot-scope="scope" :class="(scope.row.sz_INDEX.slice(0, 1) == '-') ? 'green' : 'red'">
           {{ scope.row.sz_INDEX }}
@@ -134,7 +134,7 @@
       </el-table-column>
       <el-table-column prop="business_INDEX" label="创业板指" align="center">
         <template slot-scope="{}" slot="header">
-          <a href="https://xueqiu.com/S/SZ399006" target="_blank">创业板指</a>
+          <el-link type="primary" href="https://xueqiu.com/S/SZ399006" target="_blank">创业板指</el-link>
         </template>
         <span slot-scope="scope" :class="(scope.row.business_INDEX.slice(0, 1) == '-') ? 'green' : 'red'">
           {{ scope.row.business_INDEX }}
@@ -188,10 +188,10 @@
           </el-table-column>
           <el-table-column label="链接" align="left">
             <span slot-scope="scope">
-              <a :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">雪球</a>
-              <a :href=scope.row.taoGuLink target="_blank" style="margin-left: 6px">淘股吧</a>
-              <a :href=scope.row.dongFangLink target="_blank" style="margin-left: 6px">东方财富</a>
-              <a :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">同花顺</a>
+              <el-link type="primary" :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">雪球</el-link>
+              <el-link type="primary" :href=scope.row.taoGuLink target="_blank" style="margin-left: 6px">淘股吧</el-link>
+              <el-link type="primary" :href=scope.row.dongFangLink target="_blank" style="margin-left: 6px">东方财富</el-link>
+              <el-link type="primary" :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">同花顺</el-link>
             </span>
           </el-table-column>
         </el-table>

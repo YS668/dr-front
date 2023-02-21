@@ -22,8 +22,8 @@
                                 <el-table :data="xq_one" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称" >
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.xueQiuLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</a>
+                                            <el-link type="primary" :href=scope.row.xueQiuLink target="_blank"
+                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="nowPrice" label="现价" >
@@ -42,8 +42,8 @@
                                 <el-table :data="xq_tf" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称" >
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.xueQiuLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</a>
+                                            <el-link type="primary" :href=scope.row.xueQiuLink target="_blank"
+                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="nowPrice" label="现价" >
@@ -81,8 +81,8 @@
                                 <el-table :data="th_one" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称" >
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.tongHLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</a>
+                                            <el-link type="primary" :href=scope.row.tongHLink target="_blank"
+                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="nowPrice" label="现价" >
@@ -101,8 +101,8 @@
                                 <el-table :data="th_tf" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称" >
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.tongHLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</a>
+                                            <el-link type="primary" :href=scope.row.tongHLink target="_blank"
+                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="nowPrice" label="现价" >
@@ -142,8 +142,8 @@
                                 <el-table :data="df_rq" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称" >
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.dongFangLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</a>
+                                            <el-link type="primary" :href=scope.row.dongFangLink target="_blank"
+                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="nowPrice" label="现价" >
@@ -162,8 +162,8 @@
                                 <el-table :data="df_up" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称" >
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.dongFangLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</a>
+                                            <el-link type="primary" :href=scope.row.dongFangLink target="_blank"
+                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="nowPrice" label="现价" >
@@ -201,8 +201,8 @@
                                 <el-table :data="tg_sh" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称" >
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.taoGuLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</a>
+                                            <el-link type="primary" :href=scope.row.taoGuLink target="_blank"
+                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="nowPrice" label="现价" >
@@ -221,8 +221,8 @@
                                 <el-table :data="tg_sz" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称" >
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.taoGuLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</a>
+                                            <el-link type="primary" :href=scope.row.taoGuLink target="_blank"
+                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="nowPrice" label="现价" >

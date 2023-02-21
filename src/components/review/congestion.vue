@@ -10,11 +10,11 @@
                     </el-row>
                     <el-row>
                         <el-col :span="12">
-                            <span><a href="https://news.10jqka.com.cn/realtimenews.html"
-                                    target="_blank">7*24咨询</a></span>
+                            <span><el-link type="primary" href="https://news.10jqka.com.cn/realtimenews.html"
+                                    target="_blank">7*24咨询</el-link></span>
                         </el-col>
                         <el-col :span="12">
-                            <span><a href="http://data.10jqka.com.cn/market/longhu/" target="_blank">同花顺龙虎榜</a></span>
+                            <span><el-link type="primary" href="http://data.10jqka.com.cn/market/longhu/" target="_blank">同花顺龙虎榜</el-link></span>
                         </el-col>
                     </el-row>
                     <el-row>
@@ -23,9 +23,9 @@
                                 <el-table :data="index" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">{{
+                                            <el-link type="primary" :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">{{
                                                 scope.row.stockName
-                                            }}</a>
+                                            }}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="trend" label="涨幅">
@@ -60,11 +60,11 @@
                     </el-row>
                     <el-row>
                         <el-col :span="12">
-                            <span><a href="https://www.iwencai.com/unifiedwap/result?w=今日成交额从高到低前20名"
-                                    target="_blank">问财链接</a></span>
+                            <span><el-link type="primary" href="https://www.iwencai.com/unifiedwap/result?w=今日成交额从高到低前20名"
+                                    target="_blank">问财链接</el-link></span>
                         </el-col>
                         <el-col :span="12">
-                            <span><a href="http://data.10jqka.com.cn/market/longhu/" target="_blank">同花顺龙虎榜</a></span>
+                            <span><el-link type="primary" href="http://data.10jqka.com.cn/market/longhu/" target="_blank">同花顺龙虎榜</el-link></span>
                         </el-col>
                     </el-row>
                     <el-row>
@@ -73,9 +73,9 @@
                                 <el-table :data="turnoverSort" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
+                                            <el-link type="primary" :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
                                                 scope.row.stockName
-                                            }}</a>
+                                            }}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="turnover" label="成交额">
@@ -103,10 +103,10 @@
                     </el-row>
                     <el-row>
                         <el-col :span="12">
-                            <span><a href="https://www.iwencai.com/unifiedwap/result?w=今日概念板块涨跌幅从大到小前&querytype=zhishu" target="_blank">概念板块</a></span>
+                            <span><el-link type="primary" href="https://www.iwencai.com/unifiedwap/result?w=今日概念板块涨跌幅从大到小前&querytype=zhishu" target="_blank">概念板块</el-link></span>
                         </el-col>
                         <el-col :span="12">
-                            <span><a href="https://www.iwencai.com/unifiedwap/result?w=今日行业板块涨跌幅从大到小前&querytype=zhishu" target="_blank">行业板块</a></span>
+                            <span><el-link type="primary" href="https://www.iwencai.com/unifiedwap/result?w=今日行业板块涨跌幅从大到小前&querytype=zhishu" target="_blank">行业板块</el-link></span>
                         </el-col>
                     </el-row>
                     <el-row>
@@ -115,9 +115,9 @@
                                 <el-table :data="conceptSort" border style="width: 100%" max-height="800">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
+                                            <el-link type="primary" :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
                                                 scope.row.stockName
-                                            }}</a>
+                                            }}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="trend" label="涨幅">
@@ -145,9 +145,9 @@
                                 <el-table :data="industrySort" border style="width: 100%" max-height="800">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
-                                            <a :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
+                                            <el-link type="primary" :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
                                                 scope.row.stockName
-                                            }}</a>
+                                            }}</el-link>
                                         </span>
                                     </el-table-column>
                                     <el-table-column prop="trend" label="涨幅">

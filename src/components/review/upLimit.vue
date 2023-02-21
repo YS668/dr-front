@@ -59,10 +59,10 @@
       </el-table-column>
       <el-table-column label="链接" align="left">
         <span slot-scope="scope">
-          <a :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">雪球</a>
-          <a :href=scope.row.taoGuLink target="_blank" style="margin-left: 6px">淘股吧</a>
-          <a :href=scope.row.dongFangLink target="_blank" style="margin-left: 6px">东方财富</a>
-          <a :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">同花顺</a>
+          <el-link type="primary" :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">雪球</el-link>
+          <el-link type="primary" :href=scope.row.taoGuLink target="_blank" style="margin-left: 6px">淘股吧</el-link>
+          <el-link type="primary" :href=scope.row.dongFangLink target="_blank" style="margin-left: 6px">东方财富</el-link>
+          <el-link type="primary" :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">同花顺</el-link>
         </span>
       </el-table-column>
 
@@ -141,6 +141,4 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>
