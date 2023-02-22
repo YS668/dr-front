@@ -66,6 +66,7 @@ export default {
     data() {
         return {
             required: true,
+            user: {},
             fromData: {
                 uid: '',
                 topic: '',
@@ -91,10 +92,26 @@ export default {
     methods: {
         //注意判断temp是否为空
         save() {
-            if (this.noData() || (this.fromData.topic == null || this.fromData.topic == '')) {
+            if (this.fromData.topic == null || this.fromData.topic == '') {
                 this.$notify.error({
                     title: '错误',
-                    message: '您还没有填写内容/题目，请填写完成再提交',
+                    message: '您还没有填写题目，请填写完成再提交',
+                    offset: 100
+                });
+                return
+            }
+            if (this.fromData.topic.length > 20) {
+                this.$notify.error({
+                    title: '错误',
+                    message: '题目最多20个字，感谢理解',
+                    offset: 100
+                });
+                return
+            }
+            if(this.noData()){
+                this.$notify.error({
+                    title: '错误',
+                    message: '您还没有填写内容，请填写完成再提交',
                     offset: 100
                 });
                 return
@@ -106,7 +123,7 @@ export default {
                     "<h3 style=\"font-weight:800; color: black;font-size: 20px;\">反思：</h3>" + this.fromData.f 
             }
             this.$axios.post('/review/plan/save',{
-                uid: "1",
+                uid: this.user.uid,
                 topic: this.fromData.topic,
                 type: this.fromData.type,
                 flag: this.fromData.flag,
@@ -244,6 +261,9 @@ export default {
                 }
             }
         },
+    },
+    created() {
+        this.user = JSON.parse(sessionStorage.getItem('CurUser'))
     },
     components: {
         TinymceEditor,
