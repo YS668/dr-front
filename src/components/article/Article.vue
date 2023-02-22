@@ -33,21 +33,11 @@ export default {
     data() {
         return {
             WxArticle:[],
-            //开始请求的时间
-            startTime:0
         }
     },
     methods: {
         //加载文章
         loadPost(){
-            //设计一小时缓存
-            this.startTime = sessionStorage.getItem('startTime');
-            if(this.startTime != 0){
-                var temp = new Date().getTime()/1000 - this.startTime
-                if(temp < 3600){
-                    return;
-                }
-            }
             this.$axios.get('/wx/article',{
                 Headers:{
                     'Cache-Control':'max-age=3600'
@@ -59,9 +49,6 @@ export default {
                         type: 'success'
                     });
                     this.WxArticle = res.data;
-                    console.log(this.WxArticle)
-                    //重新计算时间
-                    sessionStorage.setItem('startTime', new Date().getTime()/1000 );
                 } else {
                     this.$message({
                         message: '操作失败！',
