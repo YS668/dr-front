@@ -41,14 +41,13 @@ export default {
         //加载文章
         loadPost(){
             //设计一小时缓存
+            this.startTime = sessionStorage.getItem('startTime');
             if(this.startTime != 0){
-                console.log(this.startTime)
                 var temp = new Date().getTime()/1000 - this.startTime
                 if(temp < 3600){
                     return;
                 }
             }
-            console.log("1111")
             this.$axios.get('/wx/article',{
                 Headers:{
                     'Cache-Control':'max-age=3600'
@@ -62,7 +61,7 @@ export default {
                     this.WxArticle = res.data;
                     console.log(this.WxArticle)
                     //重新计算时间
-                    this.startTime = new Date().getTime()/1000 
+                    sessionStorage.setItem('startTime', new Date().getTime()/1000 );
                 } else {
                     this.$message({
                         message: '操作失败！',
