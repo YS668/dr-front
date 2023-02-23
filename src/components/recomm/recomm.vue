@@ -72,7 +72,6 @@ export default {
         return
       }
       console.log(this.from.content)
-      return
       this.$axios.post('/recomm/save', {
         uid: this.user.uid,
         topic: this.from.topic,
