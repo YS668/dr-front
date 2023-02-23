@@ -37,7 +37,7 @@ export default {
     return {
       user: {},
       from:{
-        content: '',
+        content: '请在这里填写您建议，非常感谢您原因抽出宝贵的时间给予我们建议，我们一定会仔细处理，再次感谢您的建议',
         topic: ''
       }
       
@@ -46,7 +46,8 @@ export default {
   methods: {
     save() {
       if (this.from.content == null 
-          || this.from.content.length == 0 ) {
+          || this.from.content.length == 0 
+          || this.from.content == '请在这里填写您建议，非常感谢您原因抽出宝贵的时间给予我们建议，我们一定会仔细处理，再次感谢您的建议') {
         this.$notify.error({
           title: '错误',
           message: '请输入200字数以内的建议再提交，非常感谢您的宝贵建议',
@@ -70,6 +71,8 @@ export default {
         });
         return
       }
+      console.log(this.from.content)
+      return
       this.$axios.post('/recomm/save', {
         uid: this.user.uid,
         topic: this.from.topic,
@@ -93,7 +96,7 @@ export default {
       })
     },
     reset(){
-      this.from.content = ''
+      this.from.content = '请在这里填写您建议，非常感谢您原因抽出宝贵的时间给予我们建议，我们一定会仔细处理，再次感谢您的建议'
       this.from.topic = ''
     }
   },
