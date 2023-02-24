@@ -41,11 +41,7 @@ export default {
     methods: {
         //加载文章
         loadPost() {
-            this.$axios.get('/wx/article', {
-                Headers: {
-                    'Cache-Control': 'max-age=3600'
-                }
-            }).then(res => {
+            this.$axios.get('/wx/article').then(res => {
                 if (res.code == 200) {
                     this.$message({
                         message: '操作成功！',
