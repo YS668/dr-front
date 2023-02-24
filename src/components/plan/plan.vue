@@ -31,7 +31,7 @@
       <el-table-column prop="operate" label="操作">
         <template slot-scope="scope">
           <el-button size="small" type="success"
-            @click="getContent(scope.row.content, scope.row.type, scope.row.rdid)">查看</el-button>
+            @click="getContent(scope.row)">查看</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -112,10 +112,10 @@ export default {
       return 'background: gainsboro'
     },
     //查看复盘内容
-    getContent(val, type, rdid) {
-      this.strHtml = val
+    getContent(val) {
+      this.strHtml = val.content
       this.dialogVisible = true
-      this.tit = rdid + this.getType(type)
+      this.tit = val.rdid + this.getType(val.type)+'：'+val.topic
     },
     //复盘类型
     getType(val) {
