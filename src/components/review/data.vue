@@ -1,7 +1,9 @@
 <!--复盘数据-->
 <template>
   <div>
-    <el-table :data="tableData" :header-cell-style="rowClass" border style="width: 100%" max-height="800"
+    <el-table v-loading="loading"  element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
+    :data="tableData" :header-cell-style="rowClass" border style="width: 100%" max-height="800"
       highlight-current-row>
       <el-table-column fixed prop="rdid" label="日期" width="110" align="left">
         <span slot-scope="scope">
@@ -222,6 +224,7 @@ export default {
       total: 0,
       detailVisible: false,
       gifList: [],
+      loading: true
     }
   },
   methods: {
@@ -240,6 +243,7 @@ export default {
           });
           this.tableData = res.data
           this.total = res.total
+          this.loading = false;
         } else {
           this.$message({
             message: '操作失败！',

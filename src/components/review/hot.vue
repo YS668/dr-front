@@ -19,16 +19,17 @@
                     <el-row>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="xq_one" border style="width: 100%">
-                                    <el-table-column prop="stockName" label="名称" >
+                                <el-table v-loading="loading" element-loading-text="拼命加载中"
+                                    element-loading-spinner="el-icon-loading" :data="xq_one" border style="width: 100%">
+                                    <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.xueQiuLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
+                                                style="margin-left: 6px">{{ scope.row.stockName }}</el-link>
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="nowPrice" label="现价" >
+                                    <el-table-column prop="nowPrice" label="现价">
                                     </el-table-column>
-                                    <el-table-column prop="trend" label="涨跌" >
+                                    <el-table-column prop="trend" label="涨跌">
                                         <span slot-scope="scope"
                                             :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
                                             {{ scope.row.trend }}
@@ -39,16 +40,17 @@
                         </el-col>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="xq_tf" border style="width: 100%">
-                                    <el-table-column prop="stockName" label="名称" >
+                                <el-table v-loading="loading" element-loading-text="拼命加载中"
+                                    element-loading-spinner="el-icon-loading" :data="xq_tf" border style="width: 100%">
+                                    <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.xueQiuLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
+                                                style="margin-left: 6px">{{ scope.row.stockName }}</el-link>
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="nowPrice" label="现价" >
+                                    <el-table-column prop="nowPrice" label="现价">
                                     </el-table-column>
-                                    <el-table-column prop="trend" label="涨跌" >
+                                    <el-table-column prop="trend" label="涨跌">
                                         <span slot-scope="scope"
                                             :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
                                             {{ scope.row.trend }}
@@ -78,16 +80,17 @@
                     <el-row>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="th_one" border style="width: 100%">
-                                    <el-table-column prop="stockName" label="名称" >
+                                <el-table v-loading="loading" element-loading-text="拼命加载中"
+                                    element-loading-spinner="el-icon-loading" :data="th_one" border style="width: 100%">
+                                    <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.tongHLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
+                                                style="margin-left: 6px">{{ scope.row.stockName }}</el-link>
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="nowPrice" label="现价" >
+                                    <el-table-column prop="nowPrice" label="现价">
                                     </el-table-column>
-                                    <el-table-column prop="trend" label="涨跌" >
+                                    <el-table-column prop="trend" label="涨跌">
                                         <span slot-scope="scope"
                                             :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
                                             {{ scope.row.trend }}
@@ -98,16 +101,17 @@
                         </el-col>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="th_tf" border style="width: 100%">
-                                    <el-table-column prop="stockName" label="名称" >
+                                <el-table v-loading="loading" element-loading-text="拼命加载中"
+                                    element-loading-spinner="el-icon-loading" :data="th_tf" border style="width: 100%">
+                                    <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.tongHLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
+                                                style="margin-left: 6px">{{ scope.row.stockName }}</el-link>
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="nowPrice" label="现价" >
+                                    <el-table-column prop="nowPrice" label="现价">
                                     </el-table-column>
-                                    <el-table-column prop="trend" label="涨跌" >
+                                    <el-table-column prop="trend" label="涨跌">
                                         <span slot-scope="scope"
                                             :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
                                             {{ scope.row.trend }}
@@ -139,16 +143,17 @@
                     <el-row>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="df_rq" border style="width: 100%">
-                                    <el-table-column prop="stockName" label="名称" >
+                                <el-table v-loading="loading" element-loading-text="拼命加载中"
+                                    element-loading-spinner="el-icon-loading" :data="df_rq" border style="width: 100%">
+                                    <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.dongFangLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
+                                                style="margin-left: 6px">{{ scope.row.stockName }}</el-link>
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="nowPrice" label="现价" >
+                                    <el-table-column prop="nowPrice" label="现价">
                                     </el-table-column>
-                                    <el-table-column prop="trend" label="涨跌" >
+                                    <el-table-column prop="trend" label="涨跌">
                                         <span slot-scope="scope"
                                             :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
                                             {{ scope.row.trend }}
@@ -159,16 +164,17 @@
                         </el-col>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="df_up" border style="width: 100%">
-                                    <el-table-column prop="stockName" label="名称" >
+                                <el-table v-loading="loading" element-loading-text="拼命加载中"
+                                    element-loading-spinner="el-icon-loading" :data="df_up" border style="width: 100%">
+                                    <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.dongFangLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
+                                                style="margin-left: 6px">{{ scope.row.stockName }}</el-link>
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="nowPrice" label="现价" >
+                                    <el-table-column prop="nowPrice" label="现价">
                                     </el-table-column>
-                                    <el-table-column prop="trend" label="涨跌" >
+                                    <el-table-column prop="trend" label="涨跌">
                                         <span slot-scope="scope"
                                             :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
                                             {{ scope.row.trend }}
@@ -198,16 +204,17 @@
                     <el-row>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="tg_sh" border style="width: 100%">
-                                    <el-table-column prop="stockName" label="名称" >
+                                <el-table v-loading="loading" element-loading-text="拼命加载中"
+                                    element-loading-spinner="el-icon-loading" :data="tg_sh" border style="width: 100%">
+                                    <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.taoGuLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
+                                                style="margin-left: 6px">{{ scope.row.stockName }}</el-link>
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="nowPrice" label="现价" >
+                                    <el-table-column prop="nowPrice" label="现价">
                                     </el-table-column>
-                                    <el-table-column prop="trend" label="涨跌" >
+                                    <el-table-column prop="trend" label="涨跌">
                                         <span slot-scope="scope"
                                             :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
                                             {{ scope.row.trend }}
@@ -218,16 +225,17 @@
                         </el-col>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="tg_sz" border style="width: 100%">
-                                    <el-table-column prop="stockName" label="名称" >
+                                <el-table v-loading="loading" element-loading-text="拼命加载中"
+                                    element-loading-spinner="el-icon-loading" :data="tg_sz" border style="width: 100%">
+                                    <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.taoGuLink target="_blank"
-                                                style="margin-left: 6px">{{scope.row.stockName}}</el-link>
+                                                style="margin-left: 6px">{{ scope.row.stockName }}</el-link>
                                         </span>
                                     </el-table-column>
-                                    <el-table-column prop="nowPrice" label="现价" >
+                                    <el-table-column prop="nowPrice" label="现价">
                                     </el-table-column>
-                                    <el-table-column prop="trend" label="涨跌" >
+                                    <el-table-column prop="trend" label="涨跌">
                                         <span slot-scope="scope"
                                             :class="(scope.row.trend.slice(0, 1) == '-') ? 'green' : 'red'">
                                             {{ scope.row.trend }}
@@ -266,6 +274,7 @@ export default {
             df_up: [],
             //东方财富人气榜
             df_rq: [],
+            loading: true
         }
     },
     methods: {
@@ -294,6 +303,7 @@ export default {
                     this.df_up = res.data.df_up
                     //东方财富人气榜
                     this.df_rq = res.data.df_rq
+                    this.loading = false
                 } else {
                     this.$message({
                         message: '刷新热股榜失败！',
@@ -330,6 +340,4 @@ export default {
     display: flex;
     flex-wrap: wrap;
 }
-
-
 </style>

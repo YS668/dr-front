@@ -20,7 +20,7 @@
                     <el-row>
                         <el-col :span="24">
                             <el-card class="box-card">
-                                <el-table :data="index" border style="width: 100%">
+                                <el-table v-loading="indexLoading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" :data="index" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.xueQiuLink target="_blank" style="margin-left: 6px">{{
@@ -70,7 +70,7 @@
                     <el-row>
                         <el-col :span="24">
                             <el-card class="box-card">
-                                <el-table :data="turnoverSort" border style="width: 100%">
+                                <el-table v-loading="turnoverSortLoading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" :data="turnoverSort" border style="width: 100%">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
@@ -112,7 +112,7 @@
                     <el-row>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="conceptSort" border style="width: 100%" max-height="800">
+                                <el-table v-loading="conceptSortLoading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" :data="conceptSort" border style="width: 100%" max-height="800">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
@@ -142,7 +142,7 @@
                         </el-col>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table :data="industrySort" border style="width: 100%" max-height="800">
+                                <el-table v-loading="industrySortLoading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" :data="industrySort" border style="width: 100%" max-height="800">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
@@ -187,7 +187,11 @@ export default {
             index: [],
             turnoverSort: [],
             industrySort:[],
-            conceptSort:[]
+            conceptSort:[],
+            indexLoading: true,
+            turnoverSortLoading: true,
+            industrySortLoading: true,
+            conceptSortLoading: true,
         }
     },
     methods: {
@@ -200,6 +204,7 @@ export default {
                     });
                     console.log(res)
                     this.index = res.data
+                    this.indexLoading = false
                 } else {
                     this.$message({
                         message: '刷新主要指数失败！',
@@ -217,6 +222,7 @@ export default {
                     });
                     console.log(res)
                     this.turnoverSort = res.data
+                    this.turnoverSortLoading = false
                 } else {
                     this.$message({
                         message: '刷新成交额失败！',
@@ -234,6 +240,7 @@ export default {
                     });
                     console.log(res)
                     this.industrySort = res.data
+                    this.industrySortLoading = false
                 } else {
                     this.$message({
                         message: '刷新行业板块失败！',
@@ -251,6 +258,7 @@ export default {
                     });
                     console.log(res)
                     this.conceptSort = res.data
+                    this.conceptSortLoading = false
                 } else {
                     this.$message({
                         message: '刷新概念板块失败！',

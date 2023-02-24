@@ -1,7 +1,7 @@
 <!--上涨家数界面-->
 <template>
     <div>
-    <el-table :data="tableData" :header-cell-style="rowClass" 
+    <el-table v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" :data="tableData" :header-cell-style="rowClass" 
     border style="width: 100%" max-height="800" highlight-current-row>
       <el-table-column fixed  prop="rdid" width="110" label="日期" align="left">
         <span slot-scope="scope">
@@ -68,6 +68,7 @@
       pageSize: 10,
       pageNum: 1,
       total: 0,
+      loading:true
     }
   },
   methods: {
@@ -86,6 +87,7 @@
           });
           this.tableData = res.data
           this.total=res.total
+          this.loading=false
         } else {
           this.$message({
             message: '操作失败！',

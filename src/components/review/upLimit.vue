@@ -1,7 +1,7 @@
 <!--涨停界面-->
 <template>
   <div>
-    <el-table :data="tableData.slice((pageNum - 1) * pageSize, pageNum * pageSize)" :header-cell-style="rowClass"
+    <el-table v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" :data="tableData.slice((pageNum - 1) * pageSize, pageNum * pageSize)" :header-cell-style="rowClass"
       :default-sort="{ prop: 'day', order: 'descending' }" border style="width: 100%" max-height="800"
       highlight-current-row>
       <el-table-column fixed prop="rdid" width="110" label="日期" align="left">
@@ -86,6 +86,7 @@ export default {
       pageNum: 1,
       total: 0,
       gifList: [],
+      loading:true
     }
   },
   methods: {
@@ -98,6 +99,7 @@ export default {
           });
           this.tableData = res.data
           this.total = res.data.length
+          this.loading = false
         } else {
           this.$message({
             message: '操作失败！',

@@ -11,7 +11,7 @@
             <el-button type="warning" @click="stockDel">删除</el-button>
             <el-button type="primary" @click="changeGroup">换组</el-button>
         </div>
-        <el-table ref="multipleTable" @selection-change="handleSelectionChange" :data="tableData"
+        <el-table v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" ref="multipleTable" @selection-change="handleSelectionChange" :data="tableData"
             :header-cell-style="rowClass" border style="width: 100%" highlight-current-row max-height="700">
             <el-table-column type="selection" width="55">
             </el-table-column>
@@ -123,6 +123,7 @@ export default {
             groups: [],
             //删除，换组条件
             delOrChange: [],
+            loading:true
         }
     },
     methods: {
@@ -146,6 +147,7 @@ export default {
                         type: 'success'
                     });
                     this.tableData = res.data
+                    this.loading = false
                 } else {
                     this.$message({
                         message: '操作失败！',
