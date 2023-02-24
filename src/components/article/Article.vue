@@ -20,7 +20,7 @@
                 </el-col>
             </el-row>
         </div>
-        <div v-if="WxArticle != null" style="text-align: center;font-size: larger;top: 10px;">
+        <div v-if="foot" style="text-align: center;font-size: larger;top: 10px;">
             <span><b>注意：(开盘时间除外)每隔一小时刷新一次 上次刷新时间：{{ time }}</b></span>
         </div>
     </div>
@@ -35,12 +35,14 @@ export default {
         return {
             WxArticle: [],
             time: '',
-            loading: true
+            loading: true,
+            foot:false
         }
     },
     methods: {
         //加载文章
         loadPost() {
+            this.foot = false
             this.$axios.get('/wx/article').then(res => {
                 if (res.code == 200) {
                     this.$message({
@@ -50,6 +52,7 @@ export default {
                     this.WxArticle = res.data.list;
                     this.time = res.data.time
                     this.loading = false
+                    this.foot =true
                 } else {
                     this.$message({
                         message: '操作失败！',
