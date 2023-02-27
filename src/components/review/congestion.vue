@@ -112,7 +112,7 @@
                     <el-row>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table v-loading="conceptSortLoading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" :data="conceptSort" border style="width: 100%" max-height="800">
+                                <el-table v-loading="conceptSortLoading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" :data="conceptSort" border style="width: 100%" max-height="1480">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
@@ -142,7 +142,7 @@
                         </el-col>
                         <el-col :span="12">
                             <el-card class="box-card">
-                                <el-table v-loading="industrySortLoading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" :data="industrySort" border style="width: 100%" max-height="800">
+                                <el-table v-loading="industrySortLoading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" :data="industrySort" border style="width: 100%" max-height="1480">
                                     <el-table-column prop="stockName" label="名称">
                                         <span slot-scope="scope">
                                             <el-link type="primary" :href=scope.row.tongHLink target="_blank" style="margin-left: 6px">{{
